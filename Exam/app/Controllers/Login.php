@@ -20,9 +20,11 @@ class Login extends Controller
     public function index()
     {
         // Vérifier si déjà connecté
-        if ($this->session->get('logged_in')) {
-            return redirect()->to('/dashboard');
-        }
+            // Toujours afficher la page de connexion pour que l'utilisateur se connecte
+            // (La vérification d'accès au dashboard est effectuée dans Dashboard::index())
+            // if ($this->session->get('logged_in')) {
+            //     return redirect()->to('/dashboard');
+            // }
 
         // Afficher la page de connexion
         return view('login/index', [
