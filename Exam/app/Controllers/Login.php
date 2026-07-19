@@ -3,105 +3,91 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
-use CodeIgniter\HTTP\RequestInterface;
-use CodeIgniter\HTTP\ResponseInterface;
-use Psr\Log\LoggerInterface;
 
 class Login extends Controller
 {
-    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
+    protected $session;
+    
+    public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
     {
         parent::initController($request, $response, $logger);
-
-        // Charger les helpers
-        helper(['form', 'url']);
         
-        // Charger les services
+        helper(['form', 'url']);
         $this->session = \Config\Services::session();
         $this->validation = \Config\Services::validation();
     }
 
     public function index()
     {
-        // Si l'utilisateur est déjà connecté, le rediriger vers le dashboard
+        // Vérifier si déjà connecté
         if ($this->session->get('logged_in')) {
-            return redirect()->to('dashboard');
+            return redirect()->to('/dashboard');
         }
 
-        $data['title'] = 'Connexion - SysInfo';
-        return view('login_view', $data);
+        // Afficher la page de connexion
+        return view('login/index', [
+            'title' => 'SysInfo — Connexion'
+        ]);
     }
 
     public function authenticate()
     {
-        // Configuration des règles de validation
+        // Règles de validation
         $rules = [
             'username' => 'required|valid_email',
             'password' => 'required|min_length[6]'
         ];
 
         if (!$this->validate($rules)) {
-            // En cas d'erreur, on revient à la page de connexion avec les erreurs
-            return view('login_view', [
-                'validation' => $this->validator
+            return view('login/index', [
+                'validation' => $this->validator,
+                'title' => 'SysInfo — Connexion'
             ]);
         }
 
-        // Données de test (statique)
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
-        // Simulation de validation sans base de données
-        if ($this->validateUser($username, $password)) {
-            // Création de la session
-            $sessionData = [
-                'username' => $username,
-                'email' => $username,
-                'logged_in' => true
-            ];
-            $this->session->set($sessionData);
-
-            // Redirection vers le tableau de bord
-            return redirect()->to('dashboard');
-        }
-
-        // En cas d'échec, on affiche un message d'erreur
-        return view('login_view', [
-            'error' => 'Email ou mot de passe incorrect'
-        ]);
-    }
-
-    private function validateUser($username, $password)
-    {
-        // Validation statique avec des identifiants de test
+        // Utilisateurs de test
         $validUsers = [
             'admin@sysinfo.com' => 'admin123',
             'user@sysinfo.com' => 'user123',
             'demo@sysinfo.com' => 'demo123'
         ];
 
-        // Vérification si l'utilisateur existe dans le tableau de test
-        if (array_key_exists($username, $validUsers)) {
-            return $validUsers[$username] === $password;
+        if (array_key_exists($username, $validUsers) && $validUsers[$username] === $password) {
+            $this->session->set([
+                'username' => $username,
+                'email' => $username,
+                'logged_in' => true,
+                'user_name' => $this->getUserName($username)
+            ]);
+
+            return redirect()->to('/dashboard');
         }
 
-        return false;
+        return view('login/index', [
+            'error' => 'Email ou mot de passe incorrect',
+            'title' => 'SysInfo — Connexion'
+        ]);
+    }
+
+    private function getUserName($email)
+    {
+        $names = [
+            'admin@sysinfo.com' => 'Admin Sys',
+            'user@sysinfo.com' => 'Utilisateur Test',
+            'demo@sysinfo.com' => 'Démo Compte'
+        ];
+        return $names[$email] ?? 'Utilisateur';
     }
 
     public function logout()
     {
+        // Détruire la session
         $this->session->destroy();
-        return redirect()->to('login');
-    }
-
-    public function dashboard()
-    {
-        // Vérifier si l'utilisateur est connecté
-        if (!$this->session->get('logged_in')) {
-            return redirect()->to('login');
-        }
-
-        $data['username'] = $this->session->get('username');
-        return view('dashboard_view', $data);
+        
+        // Rediriger vers la page de connexion
+        return redirect()->to('/login');
     }
 }

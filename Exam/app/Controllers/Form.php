@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-class Dashboard extends Controller
+class Form extends Controller
 {
     protected $session;
     
@@ -18,17 +18,14 @@ class Dashboard extends Controller
 
     public function index()
     {
-        // Vérification d'authentification
+        // Vérifier l'authentification
         if (!$this->session->get('logged_in')) {
-            // Rediriger vers la page de connexion
             return redirect()->to('/login');
         }
 
-        // Afficher le tableau de bord
-        return view('dashboard/index', [
-            'username' => $this->session->get('username'),
-            'user_name' => $this->session->get('user_name'),
-            'title' => 'SysInfo — Tableau de bord'
+        return view('form/index', [
+            'title' => 'SysInfo — Formulaire utilisateur',
+            'user_name' => $this->session->get('user_name')
         ]);
     }
 }
