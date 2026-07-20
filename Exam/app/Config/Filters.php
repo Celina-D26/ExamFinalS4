@@ -17,25 +17,25 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'auth'          => \App\Filters\Auth::class,  // ← Ajoutez cette ligne
+        'auth'          => \App\Filters\Auth::class,
     ];
 
     public $globals = [
         'before' => [
-            // 'honeypot',
-            'csrf',
-            // 'invalidchars',
+            // ON ENLÈVE 'csrf' D'ICI pour éviter de bloquer les affichages de page GET
         ],
         'after' => [
             'toolbar',
-            // 'honeypot',
-            // 'secureheaders',
         ],
     ];
 
-    public $methods = [];
+    // Le CSRF s'applique uniquement lors des soumissions de formulaires (POST)
+    public $methods = [
+        'post' => ['csrf'],
+    ];
 
+    // Protection des routes via le filtre Auth
     public $filters = [
-        'auth' => ['before' => ['dashboard', 'users', 'form']],  // ← Protège ces routes
+        'auth' => ['before' => ['dashboard', 'users', 'form']], 
     ];
 }
