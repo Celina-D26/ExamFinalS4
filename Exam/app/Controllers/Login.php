@@ -8,7 +8,7 @@ use App\Models\UserModel;
 class Login extends Controller
 {
     protected $session;
-    protected $userModel;
+    protected $validation;
     
     public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
     {
@@ -17,7 +17,6 @@ class Login extends Controller
         helper(['form', 'url']);
         $this->session = \Config\Services::session();
         $this->validation = \Config\Services::validation();
-        $this->userModel = new UserModel();
     }
 
     public function index()
@@ -34,6 +33,7 @@ class Login extends Controller
     public function authenticate()
     {
         $rules = [
+            'username' => 'required|min_length[2]|max_length[50]',
             'phone' => 'required|min_length[8]|max_length[20]'
         ];
 
@@ -44,40 +44,64 @@ class Login extends Controller
             ]);
         }
 
-        $phoneNumber = $this->request->getPost('phone');
-        
-        // Nettoyer le numéro de téléphone
-        $phoneNumber = $this->cleanPhoneNumber($phoneNumber);
-        
-        // Rechercher ou créer l'utilisateur
-        $user = $this->userModel->findOrCreateByPhone($phoneNumber);
-        
-        if ($user) {
-            $this->session->set([
-                'user_id' => $user['id'],
-                'phone_number' => $user['phone_number'],
-                'user_name' => $user['name'] ?? 'Utilisateur',
-                'email' => $user['email'] ?? '',
-                'logged_in' => true
+        $username = trim($this->request->getPost('username'));
+        $phoneNumber = $this->cleanPhoneNumber($this->request->getPost('phone'));
+
+        $userModel = new UserModel();
+
+        try {
+            $user = $userModel->findUser($username, $phoneNumber);
+            
+            if ($user) {
+                $userModel->updateLoginInfo($user['id']);
+                $user = $userModel->find($user['id']);
+
+                $this->session->set([
+                    'user_id' => $user['id'],
+                    'username' => $user['username'],
+                    'phone_number' => $user['phone_number'],
+                    'email' => $user['email'] ?? '',
+                    'logged_in' => true
+                ]);
+
+                return redirect()->to('/dashboard');
+            }
+
+            $newUser = $userModel->createUser($username, $phoneNumber);
+
+            if ($newUser) {
+                $this->session->set([
+                    'user_id' => $newUser['id'],
+                    'username' => $newUser['username'],
+                    'phone_number' => $newUser['phone_number'],
+                    'email' => $newUser['email'] ?? '',
+                    'logged_in' => true
+                ]);
+
+                return redirect()->to('/dashboard');
+            }
+
+            return view('login/index', [
+                'error' => 'Erreur lors de la création du compte',
+                'title' => 'SysInfo — Connexion'
             ]);
 
-            return redirect()->to('/dashboard');
+        } catch (\Exception $e) {
+            log_message('error', 'Erreur login: ' . $e->getMessage());
+            
+            return view('login/index', [
+                'error' => 'Erreur de connexion. Veuillez réessayer.',
+                'title' => 'SysInfo — Connexion'
+            ]);
         }
-
-        return view('login/index', [
-            'error' => 'Numéro de téléphone invalide',
-            'title' => 'SysInfo — Connexion'
-        ]);
     }
 
     private function cleanPhoneNumber($phone)
     {
-        // Supprimer tous les caractères non numériques
         $phone = preg_replace('/[^0-9]/', '', $phone);
         
-        // Ajouter le code pays si nécessaire (ex: 261 pour Madagascar)
-        if (strlen($phone) === 9 && substr($phone, 0, 1) !== '0') {
-            $phone = '261' . $phone;
+        if (substr($phone, 0, 1) === '0') {
+            $phone = substr($phone, 1);
         }
         
         return $phone;

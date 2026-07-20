@@ -85,10 +85,10 @@
 
     <div class="sidebar-bottom">
         <div class="user-row" style="padding:8px 10px; border-radius:8px; background:rgba(255,255,255,0.05); margin-bottom:8px;">
-            <div class="avatar">📱</div>
+            <div class="avatar"><?= substr($username ?? 'U', 0, 2) ?></div>
             <div class="user-info">
-                <div class="name"><?= esc($user_name ?? 'Utilisateur') ?></div>
-                <div class="role"><?= esc($phone_number ?? '') ?></div>
+                <div class="name"><?= esc($username ?? 'Utilisateur') ?></div>
+                <div class="role">📱 <?= esc($phone_number ?? '') ?></div>
             </div>
         </div>
         <a href="<?= site_url('logout') ?>" class="nav-item" style="background:var(--c-primary); color:#fff; margin:4px 0 0 0; border-radius:7px; padding:9px 14px; text-decoration:none; display:flex; align-items:center; gap:10px; font-size:13.5px; font-weight:500;">

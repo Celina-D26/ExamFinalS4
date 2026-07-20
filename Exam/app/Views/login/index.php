@@ -6,6 +6,18 @@
     <title><?= $title ?? 'SysInfo — Connexion' ?></title>
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>" />
     <style>
+        .login-info {
+            background: rgba(37,99,235,.06);
+            border-radius: var(--radius);
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--c-muted);
+            border-left: 3px solid var(--c-primary);
+        }
+        .login-info strong {
+            color: var(--c-text);
+        }
         .phone-input-group {
             display: flex;
             align-items: center;
@@ -37,18 +49,6 @@
             outline: none;
             width: 100%;
         }
-        .login-info {
-            background: rgba(37,99,235,.06);
-            border-radius: var(--radius);
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            color: var(--c-muted);
-            border-left: 3px solid var(--c-primary);
-        }
-        .login-info strong {
-            color: var(--c-text);
-        }
         .test-numbers {
             margin-top: 16px;
             padding: 12px 16px;
@@ -65,6 +65,14 @@
             font-size: 12px;
             color: var(--c-primary);
             margin: 0 4px;
+        }
+        .test-item {
+            display: inline-block;
+            margin: 4px 8px;
+            font-size: 12px;
+        }
+        .test-item strong {
+            color: var(--c-text);
         }
     </style>
 </head>
@@ -86,11 +94,11 @@
         </div>
 
         <h2>Connexion</h2>
-        <p class="subtitle">Connectez-vous avec votre numéro de téléphone</p>
+        <p class="subtitle">Entrez votre nom et numéro de téléphone</p>
 
         <div class="login-info">
             <svg viewBox="0 0 24 24" width="16" height="16" style="display:inline-block;vertical-align:middle;margin-right:8px;stroke:var(--c-primary);fill:none;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <span>Aucune inscription nécessaire. <strong>Entrez votre numéro</strong> pour vous connecter automatiquement.</span>
+            <span>💡 <strong>Nouveau compte ?</strong> Il sera créé automatiquement avec vos informations.</span>
         </div>
 
         <?php if (isset($error)): ?>
@@ -99,15 +107,42 @@
             </div>
         <?php endif; ?>
 
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="success-message" style="background:#dcfce7; color:#16a34a; padding:10px 14px; border-radius:8px; margin-bottom:20px;">
+                <?= session()->getFlashdata('success') ?>
+            </div>
+        <?php endif; ?>
+
         <form action="<?= site_url('login/authenticate') ?>" method="post">
             <?= csrf_field() ?>
             
+            <div class="field-group">
+                <label>Nom d'utilisateur</label>
+                <div class="input-wrap">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <input type="text" name="username" placeholder="Votre nom" 
+                           value="<?= old('username') ?>" autofocus />
+                </div>
+                <?php if (isset($validation) && $validation->hasError('username')): ?>
+                    <small style="color:#dc2626; font-size:12px; margin-top:4px; display:block;">
+                        <?= esc($validation->getError('username')) ?>
+                    </small>
+                <?php endif; ?>
+            </div>
+
             <div class="field-group">
                 <label>Numéro de téléphone</label>
                 <div class="phone-input-group">
                     <span class="phone-prefix">+261</span>
                     <input type="tel" name="phone" placeholder="34 00 000 00" 
-                           value="<?= old('phone') ?>" autofocus />
+                           value="<?= old('phone') ?>" />
                 </div>
                 <?php if (isset($validation) && $validation->hasError('phone')): ?>
                     <small style="color:#dc2626; font-size:12px; margin-top:4px; display:block;">
@@ -120,17 +155,21 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-full" style="margin-top:8px;">
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                    <polyline points="10 17 15 12 10 7"/>
+                    <line x1="15" y1="12" x2="3" y2="12"/>
+                </svg>
                 Se connecter
             </button>
 
             <div class="test-numbers">
-                <span style="display:block;margin-bottom:6px;font-weight:600;color:var(--c-text);">Numéros de test :</span>
-                <code>340000001</code>
-                <code>340000002</code>
-                <code>340000003</code>
-                <code>340000004</code>
-                <code>340000005</code>
+                <span style="display:block;margin-bottom:8px;font-weight:600;color:var(--c-text);">🔑 Comptes de test :</span>
+                <div class="test-item"><strong>Jean Dupont</strong> / <code>340000001</code></div>
+                <div class="test-item"><strong>Marie Martin</strong> / <code>340000002</code></div>
+                <div class="test-item"><strong>Pierre Ravel</strong> / <code>340000003</code></div>
+                <div class="test-item"><strong>Sophie Raja</strong> / <code>340000004</code></div>
+                <div class="test-item"><strong>David Ran</strong> / <code>340000005</code></div>
             </div>
 
             <div class="login-footer">
@@ -146,9 +185,7 @@
 <script>
     // Formatage automatique du numéro de téléphone
     document.querySelector('input[name="phone"]').addEventListener('input', function(e) {
-        // Supprimer tous les caractères non numériques
         this.value = this.value.replace(/\D/g, '');
-        // Limiter à 9 chiffres
         if (this.value.length > 9) {
             this.value = this.value.slice(0, 9);
         }

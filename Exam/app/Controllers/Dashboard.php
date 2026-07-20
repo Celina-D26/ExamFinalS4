@@ -23,7 +23,7 @@ class Dashboard extends Controller
         }
 
         return view('dashboard/index', [
-            'user_name' => $this->session->get('user_name'),
+            'username' => $this->session->get('username'),
             'phone_number' => $this->session->get('phone_number'),
             'title' => 'SysInfo — Tableau de bord'
         ]);

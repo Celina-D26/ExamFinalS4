@@ -15,15 +15,15 @@ class CreateUsersTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'username' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 50,
+                'null'       => false,
+            ],
             'phone_number' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 20,
-                'unique'     => true,
-            ],
-            'name' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
-                'null'       => true,
+                'null'       => false,
             ],
             'email' => [
                 'type'       => 'VARCHAR',
@@ -51,11 +51,15 @@ class CreateUsersTable extends Migration
 
         $this->forge->addKey('id', true);
         $this->forge->addKey('phone_number');
+        $this->forge->addKey('username');
         $this->forge->createTable('users');
+        
+        echo "✅ Table 'users' créée avec succès !\n";
     }
 
     public function down()
     {
         $this->forge->dropTable('users');
+        echo "✅ Table 'users' supprimée avec succès !\n";
     }
 }
