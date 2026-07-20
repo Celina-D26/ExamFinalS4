@@ -1,0 +1,31 @@
+## cote operateur
+-Creation migartion bareme[ok]
+-creation seeder [ok]
+-debueugage erreur base [ok]
+-creation frais controller [ok]
+-creation frais model [ok]
+-creation view frais [ok]
+-test sur navigateur [ok]
+-degueugage erreur migration [ok]
+-creation migration et seeder compte client [ok]
+-creation compte controller [ok]
+-creation compte model [ok]
+-creation view compte client [ok]
+-mise en place les sidebar dans les view [ok]
+-relation avec tableau de bord [ok]
+
+## cote client
+-login [encour]
+-operation :
+        -depot[ok]
+        -retrait[ok]
+        -transfer[ok]
+        -historique[ok]
+-debeugage erreur base[ok]
+-debeugage depot erreur montant[encour]
+-relation avec dashboard[ok]
+-sidebar de view [ok]
+-view historique [ok]
+-view operation [ok]
+-relation avec frais [ok]
+-

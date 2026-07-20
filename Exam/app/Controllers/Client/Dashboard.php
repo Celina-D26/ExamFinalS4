@@ -24,18 +24,23 @@ class Dashboard extends Controller
 
     public function index()
     {
+        // Vérifier si l'utilisateur est connecté
         if (!$this->session->get('logged_in')) {
             return redirect()->to('/login');
         }
 
         $phoneNumber = $this->session->get('phone_number');
+        $username = $this->session->get('username') ?? 'Utilisateur';
+        
+        // Récupérer le client
         $client = $this->compteModel->getClientByPhone($phoneNumber);
         
         // Si le client n'existe pas, le créer
         if (!$client) {
-            $client = $this->compteModel->insert([
-                'client_id' => 'CLT' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT),
-                'nom' => $this->session->get('username') ?? 'Utilisateur',
+            $clientId = 'CLT' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT);
+            $this->compteModel->insert([
+                'client_id' => $clientId,
+                'nom' => $username,
                 'prenom' => '',
                 'phone_number' => $phoneNumber,
                 'email' => $this->session->get('email') ?? '',
@@ -49,13 +54,40 @@ class Dashboard extends Controller
             $client = $this->compteModel->getClientByPhone($phoneNumber);
         }
 
-        // Récupérer les dernières transactions
-        $transactions = $this->transactionModel->getTransactionsClient($client['client_id'], 10);
-        $stats = $this->transactionModel->getStatsClient($client['client_id']);
+        // Récupérer les transactions du client
+        $transactions = $this->transactionModel
+            ->where('client_id', $client['client_id'])
+            ->orderBy('created_at', 'DESC')
+            ->limit(10)
+            ->findAll();
+
+        // Calculer les statistiques
+        $total = $this->transactionModel
+            ->where('client_id', $client['client_id'])
+            ->countAllResults();
+            
+        $totalMontant = $this->transactionModel
+            ->where('client_id', $client['client_id'])
+            ->selectSum('montant')
+            ->get()
+            ->getRowArray();
+            
+        $totalFrais = $this->transactionModel
+            ->where('client_id', $client['client_id'])
+            ->selectSum('frais_appliques')
+            ->get()
+            ->getRowArray();
+
+        $stats = [
+            'total' => $total,
+            'total_montant' => $totalMontant['montant'] ?? 0,
+            'total_frais' => $totalFrais['frais_appliques'] ?? 0,
+            'total_net' => ($totalMontant['montant'] ?? 0) - ($totalFrais['frais_appliques'] ?? 0)
+        ];
 
         $data = [
             'title' => 'Mobile Money — Tableau de bord',
-            'username' => $this->session->get('username'),
+            'username' => $username,
             'phone_number' => $phoneNumber,
             'client' => $client,
             'transactions' => $transactions,

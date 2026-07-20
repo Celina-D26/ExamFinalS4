@@ -11,6 +11,7 @@
         </div>
     </div>
 
+    <!-- Navigation -->
     <div class="sidebar-section">Navigation</div>
 
     <a href="<?= site_url('client/dashboard') ?>" class="nav-item <?= (current_url() == site_url('client/dashboard')) ? 'active' : '' ?>">
@@ -22,6 +23,9 @@
         </svg>
         <span>Tableau de bord</span>
     </a>
+
+    <!-- Opérations (Gestion Financière) -->
+    <div class="sidebar-section">Gestion Financière</div>
 
     <a href="<?= site_url('client/operations') ?>" class="nav-item <?= (current_url() == site_url('client/operations')) ? 'active' : '' ?>">
         <svg viewBox="0 0 24 24">
@@ -39,26 +43,49 @@
         <span>Historique</span>
     </a>
 
-    <!-- Espace Opérateur -->
+    <!-- Administration -->
     <div class="sidebar-section">Administration</div>
-    <a href="<?= site_url('comptes') ?>" class="nav-item <?= (current_url() == site_url('comptes')) ? 'active' : '' ?>">
-        <svg viewBox="0 0 24 24">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-        </svg>
-        <span>Comptes Clients</span>
-    </a>
 
     <a href="<?= site_url('frais') ?>" class="nav-item <?= (current_url() == site_url('frais')) ? 'active' : '' ?>">
         <svg viewBox="0 0 24 24">
-            <line x1="12" y1="1" x2="12" y2="23" />
-            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
         </svg>
         <span>Barèmes Frais</span>
     </a>
 
+    <a href="<?= site_url('comptes') ?>" class="nav-item <?= (current_url() == site_url('comptes') || strpos(current_url(), 'comptes') !== false) ? 'active' : '' ?>">
+        <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
+        </svg>
+        <span>Comptes Clients</span>
+        <span class="nav-badge"><?= $totalClients ?? '5' ?></span>
+    </a>
+
+    <a href="<?= site_url('prefixes') ?>" class="nav-item <?= (current_url() == site_url('prefixes')) ? 'active' : '' ?>">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        </svg>
+        <span>Préfixes & Commissions</span>
+    </a>
+
+    <a href="<?= site_url('gains') ?>" class="nav-item <?= (current_url() == site_url('gains')) ? 'active' : '' ?>">
+        <svg viewBox="0 0 24 24">
+            <line x1="12" y1="1" x2="12" y2="23" />
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        </svg>
+        <span>Situation des Gains</span>
+    </a>
+
+    <a href="<?= site_url('gains/montants') ?>" class="nav-item <?= (current_url() == site_url('gains/montants')) ? 'active' : '' ?>">
+        <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
+        </svg>
+        <span>Montants par Opérateur</span>
+    </a>
+
+    <!-- Pied de page -->
     <div class="sidebar-bottom">
         <div class="user-row">
             <div class="avatar"><?= substr($username ?? 'U', 0, 2) ?></div>
@@ -174,6 +201,20 @@
         color: #fff;
     }
 
+    .nav-badge {
+        margin-left: auto;
+        background: rgba(255,255,255,0.12);
+        padding: 0 8px;
+        border-radius: 10px;
+        font-size: 10px;
+        font-weight: 600;
+        color: #e2e8f0;
+    }
+
+    .nav-item.active .nav-badge {
+        background: rgba(255,255,255,0.2);
+    }
+
     .sidebar-bottom {
         margin-top: auto;
         border-top: 1px solid rgba(255,255,255,0.06);
@@ -221,7 +262,7 @@
             padding: 12px 8px;
         }
         .sidebar .brand-name, .sidebar .brand-sub, .sidebar .sidebar-section, 
-        .sidebar .nav-item span, .sidebar .user-info {
+        .sidebar .nav-item span, .sidebar .user-info, .sidebar .nav-badge {
             display: none;
         }
         .sidebar .nav-item {
