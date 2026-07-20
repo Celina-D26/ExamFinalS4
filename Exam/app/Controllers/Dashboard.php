@@ -18,16 +18,13 @@ class Dashboard extends Controller
 
     public function index()
     {
-        // Vérification d'authentification
         if (!$this->session->get('logged_in')) {
-            // Rediriger vers la page de connexion
             return redirect()->to('/login');
         }
 
-        // Afficher le tableau de bord
         return view('dashboard/index', [
-            'username' => $this->session->get('username'),
             'user_name' => $this->session->get('user_name'),
+            'phone_number' => $this->session->get('phone_number'),
             'title' => 'SysInfo — Tableau de bord'
         ]);
     }
