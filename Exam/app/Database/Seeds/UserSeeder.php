@@ -8,7 +8,11 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        $data = [
+        // Vider la table
+        $this->db->table('users')->truncate();
+        
+        // Données de test
+        $users = [
             [
                 'username'     => 'Jean Dupont',
                 'phone_number' => '340000001',
@@ -51,8 +55,15 @@ class UserSeeder extends Seeder
             ],
         ];
 
-        $this->db->table('users')->insertBatch($data);
+        // Insertion une par une pour éviter les problèmes
+        foreach ($users as $user) {
+            $this->db->table('users')->insert($user);
+        }
         
-        echo "✅ " . count($data) . " utilisateurs créés avec succès !\n";
+        echo "✅ " . count($users) . " utilisateurs créés avec succès !\n";
+        
+        // Vérification
+        $count = $this->db->table('users')->countAll();
+        echo "📊 Total d'utilisateurs : " . $count . "\n";
     }
 }

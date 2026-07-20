@@ -9,11 +9,11 @@ class Database extends Config
     public $defaultGroup = 'default';
 
     public $default = [
-        'DSN'          => 'sqlite:' . APPPATH . 'Database/sysinfo.db',
+        'DSN'          => '',
         'hostname'     => '',
         'username'     => '',
         'password'     => '',
-        'database'     => '',
+        'database'     => APPPATH . 'Database/sysinfo.db',  // Chemin absolu
         'DBDriver'     => 'SQLite3',
         'DBPrefix'     => '',
         'pConnect'     => false,

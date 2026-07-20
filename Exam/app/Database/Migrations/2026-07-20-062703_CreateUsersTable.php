@@ -8,6 +8,9 @@ class CreateUsersTable extends Migration
 {
     public function up()
     {
+        // Supprimer la table si elle existe
+        $this->forge->dropTable('users', true);
+        
         $this->forge->addField([
             'id' => [
                 'type'           => 'INTEGER',
@@ -59,7 +62,7 @@ class CreateUsersTable extends Migration
 
     public function down()
     {
-        $this->forge->dropTable('users');
+        $this->forge->dropTable('users', true);
         echo "✅ Table 'users' supprimée avec succès !\n";
     }
 }

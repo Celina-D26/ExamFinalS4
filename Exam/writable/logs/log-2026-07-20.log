@@ -983,3 +983,606 @@ Stack trace:
 #15 {main}
 ERROR - 2026-07-20 06:40:38 --> Erreur login: Unable to connect to the database.
 Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+DEBUG - 2026-07-20 06:53:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 06:53:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 06:53:58 --> CSRF token verified.
+DEBUG - 2026-07-20 06:53:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 06:53:58 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Models/UserModel.php(21): CodeIgniter\BaseModel->first()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(53): App\Models\UserModel->findUser()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#15 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#16 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Models/UserModel.php(21): CodeIgniter\BaseModel->first()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(53): App\Models\UserModel->findUser()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#15 {main}
+ERROR - 2026-07-20 06:53:58 --> Erreur login: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+ERROR - 2026-07-20 07:01:45 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(256): CodeIgniter\Database\MigrationRunner->ensureTable()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/MigrateRollback.php(105): CodeIgniter\Database\MigrationRunner->regress()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/SignalTrait.php(245): CodeIgniter\Commands\Database\MigrateRollback::{closure:CodeIgniter\Commands\Database\MigrateRollback::run():104}()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/MigrateRollback.php(104): CodeIgniter\Commands\Database\MigrateRollback->withSignalsBlocked()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateRollback->run()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/BaseCommand.php(119): CodeIgniter\CLI\Commands->run()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/MigrateRefresh.php(90): CodeIgniter\CLI\BaseCommand->call()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/SignalTrait.php(245): CodeIgniter\Commands\Database\MigrateRefresh->{closure:CodeIgniter\Commands\Database\MigrateRefresh::run():89}()
+#15 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/MigrateRefresh.php(89): CodeIgniter\Commands\Database\MigrateRefresh->withSignalsBlocked()
+#16 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateRefresh->run()
+#17 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#18 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#19 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#20 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#21 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(256): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/MigrateRollback.php(105): CodeIgniter\Database\MigrationRunner->regress()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/SignalTrait.php(245): CodeIgniter\Commands\Database\MigrateRollback::{closure:CodeIgniter\Commands\Database\MigrateRollback::run():104}()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/MigrateRollback.php(104): CodeIgniter\Commands\Database\MigrateRollback->withSignalsBlocked()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateRollback->run()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/BaseCommand.php(119): CodeIgniter\CLI\Commands->run()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/MigrateRefresh.php(90): CodeIgniter\CLI\BaseCommand->call()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/SignalTrait.php(245): CodeIgniter\Commands\Database\MigrateRefresh->{closure:CodeIgniter\Commands\Database\MigrateRefresh::run():89}()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/MigrateRefresh.php(89): CodeIgniter\Commands\Database\MigrateRefresh->withSignalsBlocked()
+#15 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateRefresh->run()
+#16 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#17 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#18 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#19 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#20 {main}
+CRITICAL - 2026-07-20 07:01:45 --> ErrorException: require(/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Views/errors/cli/error_exception.php): Failed to open stream: No such file or directory
+[Method: CLI, Route: migrate:refresh]
+in SYSTEMPATH/CLI/BaseCommand.php on line 133.
+ 1 SYSTEMPATH/CLI/BaseCommand.php(133): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CLI/BaseCommand.php(133): require()
+ 3 SYSTEMPATH/Commands/Database/MigrateRollback.php(120): CodeIgniter\CLI\BaseCommand->showError()
+ 4 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateRollback->run()
+ 5 SYSTEMPATH/CLI/BaseCommand.php(119): CodeIgniter\CLI\Commands->run()
+ 6 SYSTEMPATH/Commands/Database/MigrateRefresh.php(90): CodeIgniter\CLI\BaseCommand->call()
+ 7 SYSTEMPATH/CLI/SignalTrait.php(245): CodeIgniter\Commands\Database\MigrateRefresh->{closure:CodeIgniter\Commands\Database\MigrateRefresh::run():89}()
+ 8 SYSTEMPATH/Commands/Database/MigrateRefresh.php(89): CodeIgniter\Commands\Database\MigrateRefresh->withSignalsBlocked()
+ 9 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\MigrateRefresh->run()
+10 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+11 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+12 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+13 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 07:01:45 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#11 {main}
+CRITICAL - 2026-07-20 07:01:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+[Method: CLI, Route: db:seed/UserSeeder]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+ 4 SYSTEMPATH/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+ 5 SYSTEMPATH/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+ 6 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 7 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+ 8 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 9 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+10 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 07:03:24 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(173): CodeIgniter\Database\MigrationRunner->ensureTable()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Migrate.php(89): CodeIgniter\Database\MigrationRunner->latest()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/SignalTrait.php(245): CodeIgniter\Commands\Database\Migrate::{closure:CodeIgniter\Commands\Database\Migrate::run():88}()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Migrate.php(88): CodeIgniter\Commands\Database\Migrate->withSignalsBlocked()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Migrate->run()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#15 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#16 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(173): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Migrate.php(89): CodeIgniter\Database\MigrationRunner->latest()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/SignalTrait.php(245): CodeIgniter\Commands\Database\Migrate::{closure:CodeIgniter\Commands\Database\Migrate::run():88}()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Migrate.php(88): CodeIgniter\Commands\Database\Migrate->withSignalsBlocked()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Migrate->run()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#15 {main}
+CRITICAL - 2026-07-20 07:03:24 --> ErrorException: require(/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Views/errors/cli/error_exception.php): Failed to open stream: No such file or directory
+[Method: CLI, Route: migrate]
+in SYSTEMPATH/CLI/BaseCommand.php on line 133.
+ 1 SYSTEMPATH/CLI/BaseCommand.php(133): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CLI/BaseCommand.php(133): require()
+ 3 SYSTEMPATH/Commands/Database/Migrate.php(104): CodeIgniter\CLI\BaseCommand->showError()
+ 4 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Migrate->run()
+ 5 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+ 6 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 7 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+ 8 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 07:03:24 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#11 {main}
+CRITICAL - 2026-07-20 07:03:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+[Method: CLI, Route: db:seed/UserSeeder]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+ 4 SYSTEMPATH/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+ 5 SYSTEMPATH/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+ 6 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 7 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+ 8 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 9 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+10 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+DEBUG - 2026-07-20 07:04:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 07:04:44 --> CSRF token verified.
+DEBUG - 2026-07-20 07:04:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:04:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:05:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:05:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:05:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:05:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 07:05:50 --> CSRF token verified.
+DEBUG - 2026-07-20 07:05:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 07:05:50 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Models/UserModel.php(22): CodeIgniter\BaseModel->first()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(53): App\Models\UserModel->findUser()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#15 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#16 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Models/UserModel.php(22): CodeIgniter\BaseModel->first()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(53): App\Models\UserModel->findUser()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#15 {main}
+ERROR - 2026-07-20 07:05:50 --> Erreur findUser: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+ERROR - 2026-07-20 07:05:50 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/BaseModel.php(899): CodeIgniter\Model->doInsert()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(668): CodeIgniter\BaseModel->insert()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Models/UserModel.php(39): CodeIgniter\Model->insert()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(70): App\Models\UserModel->createUser()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#15 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#16 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#17 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/BaseModel.php(899): CodeIgniter\Model->doInsert()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(668): CodeIgniter\BaseModel->insert()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Models/UserModel.php(39): CodeIgniter\Model->insert()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(70): App\Models\UserModel->createUser()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#15 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#16 {main}
+ERROR - 2026-07-20 07:05:50 --> Erreur createUser: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+INFO - 2026-07-20 07:07:42 --> CSRF token verified.
+DEBUG - 2026-07-20 07:07:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:07:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:08:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:08:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 07:09:12 --> CSRF token verified.
+DEBUG - 2026-07-20 07:09:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 07:09:12 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Models/UserModel.php(22): CodeIgniter\BaseModel->first()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(53): App\Models\UserModel->findUser()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#15 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#16 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Models/UserModel.php(22): CodeIgniter\BaseModel->first()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(53): App\Models\UserModel->findUser()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#15 {main}
+ERROR - 2026-07-20 07:09:12 --> Erreur findUser: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+ERROR - 2026-07-20 07:09:12 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/BaseModel.php(899): CodeIgniter\Model->doInsert()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(668): CodeIgniter\BaseModel->insert()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Models/UserModel.php(39): CodeIgniter\Model->insert()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(70): App\Models\UserModel->createUser()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#15 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#16 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#17 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/BaseModel.php(899): CodeIgniter\Model->doInsert()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Model.php(668): CodeIgniter\BaseModel->insert()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Models/UserModel.php(39): CodeIgniter\Model->insert()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(70): App\Models\UserModel->createUser()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#15 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#16 {main}
+ERROR - 2026-07-20 07:09:12 --> Erreur createUser: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+ERROR - 2026-07-20 07:15:13 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(173): CodeIgniter\Database\MigrationRunner->ensureTable()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Migrate.php(89): CodeIgniter\Database\MigrationRunner->latest()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/SignalTrait.php(245): CodeIgniter\Commands\Database\Migrate::{closure:CodeIgniter\Commands\Database\Migrate::run():88}()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Migrate.php(88): CodeIgniter\Commands\Database\Migrate->withSignalsBlocked()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Migrate->run()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#15 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#16 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/MigrationRunner.php(173): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Migrate.php(89): CodeIgniter\Database\MigrationRunner->latest()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/SignalTrait.php(245): CodeIgniter\Commands\Database\Migrate::{closure:CodeIgniter\Commands\Database\Migrate::run():88}()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Migrate.php(88): CodeIgniter\Commands\Database\Migrate->withSignalsBlocked()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Migrate->run()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#14 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#15 {main}
+CRITICAL - 2026-07-20 07:15:13 --> ErrorException: require(/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Views/errors/cli/error_exception.php): Failed to open stream: No such file or directory
+[Method: CLI, Route: migrate]
+in SYSTEMPATH/CLI/BaseCommand.php on line 133.
+ 1 SYSTEMPATH/CLI/BaseCommand.php(133): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CLI/BaseCommand.php(133): require()
+ 3 SYSTEMPATH/Commands/Database/Migrate.php(104): CodeIgniter\CLI\BaseCommand->showError()
+ 4 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Migrate->run()
+ 5 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+ 6 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 7 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+ 8 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 07:15:13 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/spark(87): CodeIgniter\Boot::bootSpark()
+#11 {main}
+CRITICAL - 2026-07-20 07:15:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+[Method: CLI, Route: db:seed/UserSeeder]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+ 4 SYSTEMPATH/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+ 5 SYSTEMPATH/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+ 6 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 7 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+ 8 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 9 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+10 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+DEBUG - 2026-07-20 07:16:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 07:16:34 --> CSRF token verified.
+DEBUG - 2026-07-20 07:16:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 07:16:34 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(56): CodeIgniter\Database\BaseConnection->tableExists()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+#4 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#5 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/app/Controllers/Login.php(56): CodeIgniter\Database\BaseConnection->tableExists()
+#6 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(951): App\Controllers\Login->authenticate()
+#7 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#8 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#12 /opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/system/rewrite.php(44): require_once('...')
+#13 {main}
+ERROR - 2026-07-20 07:16:34 --> Erreur de connexion DB: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+DEBUG - 2026-07-20 07:27:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 07:27:16 --> CSRF token verified.
+DEBUG - 2026-07-20 07:27:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 07:27:16 --> La table users n'existe pas !
+CRITICAL - 2026-07-20 07:29:47 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: login/authenticate]
+in SYSTEMPATH/Security/Security.php on line 258.
+ 1 SYSTEMPATH/Security/Security.php(258): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(465): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+10 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+DEBUG - 2026-07-20 07:29:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 07:30:00 --> CSRF token verified.
+DEBUG - 2026-07-20 07:30:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:30:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:30:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:30:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 07:30:13 --> CSRF token verified.
+DEBUG - 2026-07-20 07:30:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:30:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 07:31:14 --> CSRF token verified.
+DEBUG - 2026-07-20 07:31:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 07:31:38 --> CSRF token verified.
+DEBUG - 2026-07-20 07:31:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:31:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

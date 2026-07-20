@@ -24,3 +24,4 @@ $routes->get('logout', 'Login::logout');
 $routes->get('dashboard', 'Dashboard::index');
 $routes->get('users', 'Users::list');
 $routes->get('form', 'Form::index');
+$routes->get('testdb', 'TestDB::index');
