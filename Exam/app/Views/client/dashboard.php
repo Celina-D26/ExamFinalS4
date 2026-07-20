@@ -75,9 +75,9 @@
             border-bottom: 1px solid #e5e7eb;
         }
         .transaction-item:last-child { border-bottom: none; }
-        .badge-deposit { background: #22c55e; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 11px; }
-        .badge-transfer { background: #3b82f6; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 11px; }
-        .badge-withdrawal { background: #f59e0b; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 11px; }
+        .badge-deposit { background: #22c55e; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 11px; display: inline-block; }
+        .badge-transfer { background: #3b82f6; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 11px; display: inline-block; }
+        .badge-withdrawal { background: #f59e0b; color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 11px; display: inline-block; }
         .positive { color: #22c55e; font-weight: 600; }
         .negative { color: #dc2626; font-weight: 600; }
         .tx-date { font-size: 12px; color: #6b7280; }
@@ -98,7 +98,7 @@
 <body>
 
 <div class="app">
-    <?= view('partials/sidebar', ['username' => $username, 'phone_number' => $phone_number]) ?>
+    <?= view('partials/sidebar', ['username' => $username ?? 'Utilisateur', 'phone_number' => $phone_number ?? '']) ?>
     
     <div class="main">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">

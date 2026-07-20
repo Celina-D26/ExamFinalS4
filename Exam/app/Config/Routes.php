@@ -19,19 +19,17 @@ $routes->group('client', ['filter' => 'auth'], function($routes) {
     $routes->get('operations', 'Client\Operations::index');
     $routes->post('operations/deposit', 'Client\Operations::deposit');
     $routes->post('operations/withdrawal', 'Client\Operations::withdrawal');
-    $routes->post('operations/transfer', 'Client\Operations::transfer');
+    $routes->post('operations/transferSimple', 'Client\Operations::transferSimple');
+    $routes->post('operations/transferMultiple', 'Client\Operations::transferMultiple');
     $routes->get('history', 'Client\Operations::history');
 });
 
 // Routes pour les barèmes
 $routes->get('frais/baremes', 'FraisController::getBaremesAjax', ['filter' => 'auth']);
-$routes->get('frais/direct', 'FraisController::getBaremesDirect', ['filter' => 'auth']);
+$routes->get('frais', 'FraisController::index', ['filter' => 'auth']);
 
 // Routes opérateur
 $routes->get('comptes', 'ComptesController::index', ['filter' => 'auth']);
-$routes->get('frais', 'FraisController::index', ['filter' => 'auth']);
-$routes->post('frais/simuler', 'FraisController::simuler', ['filter' => 'auth']);
-$routes->post('frais/enregistrer', 'FraisController::enregistrer', ['filter' => 'auth']);
 
 // Redirection
 $routes->get('dashboard', 'Client\Dashboard::index', ['filter' => 'auth']);

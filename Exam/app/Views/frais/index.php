@@ -23,7 +23,6 @@
             --c-accent: #8b5cf6;
         }
 
-        /* Styles pour le layout avec sidebar */
         body {
             margin: 0;
             background: var(--c-bg);
@@ -140,10 +139,6 @@
             color: #e2e8f0;
         }
 
-        .nav-item.active .nav-badge {
-            background: rgba(255,255,255,0.2);
-        }
-
         .sidebar-bottom {
             margin-top: auto;
             border-top: 1px solid rgba(255,255,255,0.06);
@@ -181,7 +176,38 @@
             overflow-y: auto;
         }
 
-        /* Styles pour la page des frais */
+        .card {
+            background: var(--c-surface);
+            border-radius: var(--radius);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            border: 1px solid var(--c-border);
+        }
+        .card-header {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--c-border);
+            background: transparent;
+        }
+        .card-body {
+            padding: 20px;
+        }
+
+        .badge.bg-primary {
+            background: var(--c-primary) !important;
+        }
+        .text-success {
+            color: var(--c-success) !important;
+        }
+        .btn-primary {
+            background: var(--c-primary);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+        .fw-bold {
+            font-weight: 600 !important;
+        }
+
         .phone-input-group {
             display: flex;
             align-items: center;
@@ -214,6 +240,7 @@
             outline: none;
             width: 100%;
         }
+
         .login-info {
             padding: 12px 16px;
             background: var(--c-bg);
@@ -226,55 +253,7 @@
         .login-info strong {
             color: var(--c-text);
         }
-        .test-numbers {
-            margin-top: 16px;
-            padding: 12px 16px;
-            background: var(--c-bg);
-            border-radius: var(--radius);
-            font-size: 12px;
-            color: var(--c-muted);
-            text-align: center;
-        }
-        .test-numbers code {
-            background: var(--c-surface);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            color: var(--c-primary);
-            margin: 0 4px;
-        }
-        .card {
-            background: var(--c-surface);
-            border-radius: var(--radius);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-            border: 1px solid var(--c-border);
-        }
-        .card-header {
-            padding: 14px 20px;
-            border-bottom: 1px solid var(--c-border);
-            background: transparent;
-        }
-        .card-body {
-            padding: 20px;
-        }
-        .badge.bg-primary {
-            background: var(--c-primary) !important;
-        }
-        .text-success {
-            color: var(--c-success) !important;
-        }
-        .btn-primary {
-            background: var(--c-primary);
-            border: none;
-        }
-        .btn-primary:hover {
-            background: #1d4ed8;
-        }
-        .fw-bold {
-            font-weight: 600 !important;
-        }
-        
-        /* Responsive */
+
         @media (max-width: 768px) {
             .sidebar {
                 width: 60px;
@@ -306,93 +285,65 @@
 
 <div class="app">
     <!-- SIDEBAR -->
-    <?= view('partials/sidebar') ?>
+    <?= view('partials/sidebar', ['username' => $username, 'phone_number' => $phone_number]) ?>
 
     <!-- MAIN CONTENT -->
     <div class="main">
-        <div class="topbar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-            <div class="topbar-title" style="font-size:20px; font-weight:600;">📊 Gestion des Barèmes de Frais</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <div style="font-size:20px; font-weight:600;">📊 Gestion des Barèmes de Frais</div>
         </div>
 
-        <div class="content">
-            <?php if (session()->getFlashdata('success')): ?>
-                <div class="alert alert-success">
-                    <?= session()->getFlashdata('success') ?>
-                </div>
-            <?php endif; ?>
-
-            <div class="login-info">
-                Total des gains générés par les frais : <strong><?= number_format($gainsTotaux, 2, ',', ' ') ?> Ar</strong>
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success">
+                <?= session()->getFlashdata('success') ?>
             </div>
+        <?php endif; ?>
 
-            <div class="row">
-                <div class="col-md-7 mb-4">
-                    <div class="card shadow-sm border-0">
-                        <div class="card-header bg-white fw-bold">
-                            Barèmes Configurés
-                        </div>
-                        <div class="card-body p-0">
-                            <table class="table table-hover mb-0">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Type</th>
-                                        <th>Tranche de Montant</th>
-                                        <th>Frais</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php if (!empty($baremes)): ?>
-                                        <?php foreach ($baremes as $b): ?>
-                                            <tr>
-                                                <td><span class="badge bg-primary"><?= esc(strtoupper($b['type_operation'])) ?></span></td>
-                                                <td>Entre <?= number_format($b['montant_min'], 0, ',', ' ') ?> et <?= number_format($b['montant_max'], 0, ',', ' ') ?> Ar</td>
-                                                <td class="fw-bold text-success"><?= number_format($b['frais'], 0, ',', ' ') ?> Ar</td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php else: ?>
-                                        <tr>
-                                            <td colspan="3" class="text-center text-muted">Aucun barème trouvé.</td>
-                                        </tr>
-                                    <?php endif; ?>
-                                </tbody>
-                            </table>
-                        </div>
+        <div class="login-info">
+            💰 Barèmes configurés : <strong><?= count($baremes ?? []) ?></strong>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-white fw-bold">
+                        📋 Liste des Barèmes
                     </div>
-                </div>
-
-                <div class="col-md-5">
-                    <div class="card shadow-sm border-0 p-3">
-                        <h5 class="fw-bold mb-3">🧮 Simuler une Opération</h5>
-                        
-                        <form action="<?= base_url('frais/simuler') ?>" method="post">
-                            <?= csrf_field() ?>
-
-                            <label class="form-label text-muted fs-6">Type d'opération</label>
-                            <div class="phone-input-group mb-3">
-                                <span class="phone-prefix">Type</span>
-                                <select name="type_operation" required>
-                                    <option value="depot" <?= $typeOperationTeste === 'depot' ? 'selected' : '' ?>>Dépôt</option>
-                                    <option value="retrait" <?= $typeOperationTeste === 'retrait' ? 'selected' : '' ?>>Retrait</option>
-                                    <option value="transfert" <?= $typeOperationTeste === 'transfert' ? 'selected' : '' ?>>Transfert</option>
-                                </select>
-                            </div>
-
-                            <label class="form-label text-muted fs-6">Montant (Ar)</label>
-                            <div class="phone-input-group mb-3">
-                                <span class="phone-prefix">Ar</span>
-                                <input type="number" name="montant" placeholder="Ex: 15000" value="<?= esc($montantTeste) ?>" required>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold" style="border-radius: var(--radius);">
-                                Calculer les Frais
-                            </button>
-                        </form>
-
-                        <?php if ($fraisCalcule !== null): ?>
-                            <div class="test-numbers mt-3">
-                                Montant des frais calculés : <code><?= number_format($fraisCalcule, 2, ',', ' ') ?> Ar</code>
-                            </div>
-                        <?php endif; ?>
+                    <div class="card-body p-0">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Type d'opération</th>
+                                    <th>Montant minimum</th>
+                                    <th>Montant maximum</th>
+                                    <th>Frais</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if (!empty($baremes)): ?>
+                                    <?php foreach ($baremes as $b): ?>
+                                        <tr>
+                                            <td><?= $b['id'] ?></td>
+                                            <td>
+                                                <span class="badge <?= $b['type_operation'] == 'retrait' ? 'bg-warning' : 'bg-primary' ?>">
+                                                    <?= strtoupper($b['type_operation']) ?>
+                                                </span>
+                                            </td>
+                                            <td><?= number_format($b['montant_min'], 0, ',', ' ') ?> Ar</td>
+                                            <td><?= number_format($b['montant_max'], 0, ',', ' ') ?> Ar</td>
+                                            <td class="fw-bold text-success"><?= number_format($b['frais'], 0, ',', ' ') ?> Ar</td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="5" class="text-center text-muted py-3">
+                                            Aucun barème trouvé.
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
