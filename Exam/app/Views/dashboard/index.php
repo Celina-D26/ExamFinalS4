@@ -6,9 +6,7 @@
     <title><?= $title ?? 'SysInfo — Tableau de bord' ?></title>
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    
     <style>
-        /* Variables et styles communs */
         :root {
             --c-primary: #2563eb;
             --c-bg: #f8fafc;
@@ -292,6 +290,7 @@
             align-items: center;
             gap: 6px;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .btn-primary:hover {
@@ -534,7 +533,7 @@
 <div class="app">
 
     <!-- Sidebar -->
-    <?= view('partials/sidebar') ?>
+    <?= view('partials/sidebar', ['username' => $username ?? 'Utilisateur', 'phone_number' => $phone_number ?? '']) ?>
 
     <!-- Main -->
     <div class="main">
@@ -563,10 +562,10 @@
                     <h2>Tableau de bord</h2>
                     <div class="breadcrumb">Accueil / <span>Tableau de bord</span></div>
                 </div>
-                <button class="btn btn-primary btn-sm">
-                    <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                    Exporter
-                </button>
+                <a href="<?= site_url('client/dashboard') ?>" class="btn btn-primary btn-sm">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Mobile Money
+                </a>
             </div>
 
             <!-- KPIs avec données dynamiques -->

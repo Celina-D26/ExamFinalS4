@@ -11,10 +11,9 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <div class="sidebar-section">Navigation</div>
 
-    <a href="<?= site_url('client/dashboard') ?>" class="nav-item <?= (current_url() == site_url('client/dashboard')) ? 'active' : '' ?>">
+    <a href="<?= site_url('dashboard') ?>" class="nav-item <?= (current_url() == site_url('dashboard')) ? 'active' : '' ?>">
         <svg viewBox="0 0 24 24">
             <rect width="7" height="9" x="3" y="3" rx="1" />
             <rect width="7" height="5" x="14" y="3" rx="1" />
@@ -23,9 +22,6 @@
         </svg>
         <span>Tableau de bord</span>
     </a>
-
-    <!-- Opérations (Gestion Financière) -->
-    <div class="sidebar-section">Gestion Financière</div>
 
     <a href="<?= site_url('client/operations') ?>" class="nav-item <?= (current_url() == site_url('client/operations')) ? 'active' : '' ?>">
         <svg viewBox="0 0 24 24">
@@ -43,30 +39,31 @@
         <span>Historique</span>
     </a>
 
-    <!-- Administration -->
     <div class="sidebar-section">Administration</div>
+
+    <a href="<?= site_url('comptes') ?>" class="nav-item <?= (current_url() == site_url('comptes')) ? 'active' : '' ?>">
+        <svg viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        <span>Comptes Clients</span>
+    </a>
 
     <a href="<?= site_url('frais') ?>" class="nav-item <?= (current_url() == site_url('frais')) ? 'active' : '' ?>">
         <svg viewBox="0 0 24 24">
-            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            <line x1="12" y1="1" x2="12" y2="23" />
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
         </svg>
         <span>Barèmes Frais</span>
     </a>
 
-    <a href="<?= site_url('comptes') ?>" class="nav-item <?= (current_url() == site_url('comptes') || strpos(current_url(), 'comptes') !== false) ? 'active' : '' ?>">
-        <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="3" />
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
-        </svg>
-        <span>Comptes Clients</span>
-        <span class="nav-badge"><?= $totalClients ?? '5' ?></span>
-    </a>
-
     <a href="<?= site_url('prefixes') ?>" class="nav-item <?= (current_url() == site_url('prefixes')) ? 'active' : '' ?>">
         <svg viewBox="0 0 24 24">
-            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
         </svg>
-        <span>Préfixes & Commissions</span>
+        <span>Préfixes</span>
     </a>
 
     <a href="<?= site_url('gains') ?>" class="nav-item <?= (current_url() == site_url('gains')) ? 'active' : '' ?>">
@@ -74,20 +71,11 @@
             <line x1="12" y1="1" x2="12" y2="23" />
             <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
         </svg>
-        <span>Situation des Gains</span>
+        <span>Gains</span>
     </a>
 
-    <a href="<?= site_url('gains/montants') ?>" class="nav-item <?= (current_url() == site_url('gains/montants')) ? 'active' : '' ?>">
-        <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="3" />
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
-        </svg>
-        <span>Montants par Opérateur</span>
-    </a>
-
-    <!-- Pied de page -->
     <div class="sidebar-bottom">
-        <div class="user-row">
+        <div class="user-row" style="display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:8px; background:rgba(255,255,255,0.05); margin-bottom:8px;">
             <div class="avatar"><?= substr($username ?? 'U', 0, 2) ?></div>
             <div class="user-info">
                 <div class="name"><?= esc($username ?? 'Utilisateur') ?></div>
@@ -120,7 +108,6 @@
         flex-direction: column;
         flex-shrink: 0;
     }
-
     .sidebar-brand {
         display: flex;
         align-items: center;
@@ -130,7 +117,6 @@
         border-bottom: 1px solid rgba(255,255,255,0.06);
         padding-bottom: 14px;
     }
-
     .logo-icon {
         background: #2563eb;
         border-radius: 6px;
@@ -141,24 +127,9 @@
         width: 32px;
         height: 32px;
     }
-
-    .logo-icon svg {
-        fill: #fff;
-    }
-
-    .brand-name {
-        font-weight: 700;
-        font-size: 16px;
-        letter-spacing: -0.3px;
-        color: #fff;
-    }
-
-    .brand-sub {
-        font-size: 10px;
-        opacity: 0.5;
-        letter-spacing: 0.3px;
-    }
-
+    .logo-icon svg { fill: #fff; }
+    .brand-name { font-weight: 700; font-size: 16px; color: #fff; }
+    .brand-sub { font-size: 10px; opacity: 0.5; }
     .sidebar-section {
         font-size: 10px;
         text-transform: uppercase;
@@ -167,7 +138,6 @@
         margin: 16px 10px 8px 10px;
         font-weight: 600;
     }
-
     .nav-item {
         display: flex;
         align-items: center;
@@ -181,56 +151,10 @@
         margin: 1px 0;
         position: relative;
     }
-
-    .nav-item svg {
-        width: 18px;
-        height: 18px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2;
-        flex-shrink: 0;
-    }
-
-    .nav-item:hover {
-        background: rgba(255,255,255,0.06);
-        color: #f1f5f9;
-    }
-
-    .nav-item.active {
-        background: #2563eb;
-        color: #fff;
-    }
-
-    .nav-badge {
-        margin-left: auto;
-        background: rgba(255,255,255,0.12);
-        padding: 0 8px;
-        border-radius: 10px;
-        font-size: 10px;
-        font-weight: 600;
-        color: #e2e8f0;
-    }
-
-    .nav-item.active .nav-badge {
-        background: rgba(255,255,255,0.2);
-    }
-
-    .sidebar-bottom {
-        margin-top: auto;
-        border-top: 1px solid rgba(255,255,255,0.06);
-        padding-top: 12px;
-    }
-
-    .user-row {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 12px;
-        border-radius: 7px;
-        background: rgba(255,255,255,0.05);
-        margin-bottom: 8px;
-    }
-
+    .nav-item svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+    .nav-item:hover { background: rgba(255,255,255,0.06); color: #f1f5f9; }
+    .nav-item.active { background: #2563eb; color: #fff; }
+    .sidebar-bottom { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; }
     .avatar {
         width: 32px;
         height: 32px;
@@ -244,38 +168,14 @@
         color: #fff;
         flex-shrink: 0;
     }
-
-    .user-info .name {
-        font-weight: 500;
-        font-size: 13px;
-        color: #f1f5f9;
-    }
-
-    .user-info .role {
-        font-size: 11px;
-        color: #94a3b8;
-    }
-
+    .user-info .name { font-weight: 500; font-size: 13px; color: #f1f5f9; }
+    .user-info .role { font-size: 11px; color: #94a3b8; }
     @media (max-width: 768px) {
-        .sidebar {
-            width: 60px;
-            padding: 12px 8px;
-        }
+        .sidebar { width: 60px; padding: 12px 8px; }
         .sidebar .brand-name, .sidebar .brand-sub, .sidebar .sidebar-section, 
-        .sidebar .nav-item span, .sidebar .user-info, .sidebar .nav-badge {
-            display: none;
-        }
-        .sidebar .nav-item {
-            justify-content: center;
-            padding: 10px;
-        }
-        .sidebar .sidebar-brand {
-            justify-content: center;
-        }
-        .sidebar .avatar {
-            width: 28px;
-            height: 28px;
-            font-size: 10px;
-        }
+        .sidebar .nav-item span, .sidebar .user-info { display: none; }
+        .sidebar .nav-item { justify-content: center; padding: 10px; }
+        .sidebar .sidebar-brand { justify-content: center; }
+        .sidebar .avatar { width: 28px; height: 28px; font-size: 10px; }
     }
 </style>

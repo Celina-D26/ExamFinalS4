@@ -6,7 +6,6 @@
     <title><?= $title ?? 'Montants par Opérateur' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>" />
-    
     <style>
         :root {
             --c-primary: #2563eb;
@@ -20,13 +19,7 @@
             --c-danger: #ef4444;
             --radius: 8px;
         }
-
-        body {
-            margin: 0;
-            background: var(--c-bg);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
+        body { margin: 0; background: var(--c-bg); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         .app { display: flex; min-height: 100vh; }
         
         .sidebar {
@@ -43,7 +36,6 @@
             flex-direction: column;
             flex-shrink: 0;
         }
-
         .sidebar-brand {
             display: flex;
             align-items: center;
@@ -53,7 +45,6 @@
             border-bottom: 1px solid rgba(255,255,255,0.06);
             padding-bottom: 14px;
         }
-
         .logo-icon {
             background: var(--c-primary);
             border-radius: 6px;
@@ -67,7 +58,6 @@
         .logo-icon svg { fill: #fff; }
         .brand-name { font-weight: 700; font-size: 16px; color: #fff; }
         .brand-sub { font-size: 10px; opacity: 0.5; }
-
         .sidebar-section {
             font-size: 10px;
             text-transform: uppercase;
@@ -76,7 +66,6 @@
             margin: 16px 10px 8px 10px;
             font-weight: 600;
         }
-
         .nav-item {
             display: flex;
             align-items: center;
@@ -92,7 +81,6 @@
         .nav-item svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
         .nav-item:hover { background: rgba(255,255,255,0.06); color: #f1f5f9; }
         .nav-item.active { background: var(--c-primary); color: #fff; }
-
         .sidebar-bottom { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; }
         .avatar {
             width: 32px;
@@ -109,7 +97,6 @@
         }
         .user-info .name { font-weight: 500; font-size: 13px; color: #f1f5f9; }
         .user-info .role { font-size: 11px; color: #94a3b8; }
-
         .main { flex: 1; padding: 20px 24px 32px; overflow-y: auto; }
 
         .card {
@@ -137,6 +124,13 @@
         .resume-box .stat-item .number { font-size: 24px; font-weight: 700; }
         .resume-box .stat-item .label { font-size: 11px; opacity: 0.8; }
 
+        .btn-primary { background: var(--c-primary); border: none; color: #fff; padding: 8px 16px; border-radius: var(--radius); font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-success { background: #22c55e; border: none; color: #fff; padding: 8px 16px; border-radius: var(--radius); font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-success:hover { background: #16a34a; }
+        .btn-secondary { background: #f3f4f6; border: 1px solid var(--c-border); color: var(--c-text); padding: 8px 16px; border-radius: var(--radius); font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-secondary:hover { background: #e5e7eb; }
+
         .badge-operateur {
             padding: 4px 12px;
             border-radius: 12px;
@@ -146,7 +140,7 @@
         .badge-operateur.telma { background: #dbeafe; color: #1e40af; }
         .badge-operateur.orange { background: #fef3c7; color: #92400e; }
         .badge-operateur.airtel { background: #dcfce7; color: #166534; }
-        .badge-operateur.reverser { background: #fef3c7; color: #92400e; }
+        .badge-operateur.inconnu { background: #f3f4f6; color: #6b7280; }
 
         .operator-card {
             border-left: 4px solid var(--c-primary);
@@ -161,7 +155,7 @@
         @media (max-width: 768px) {
             .sidebar { width: 60px; padding: 12px 8px; }
             .sidebar .brand-name, .sidebar .brand-sub, .sidebar .sidebar-section, 
-            .sidebar .nav-item span, .sidebar .nav-badge, .sidebar .user-info { display: none; }
+            .sidebar .nav-item span, .sidebar .user-info { display: none; }
             .sidebar .nav-item { justify-content: center; padding: 10px; }
             .sidebar .sidebar-brand { justify-content: center; }
             .main { padding: 12px 16px; }
@@ -173,12 +167,12 @@
 
 <div class="app">
     <!-- Sidebar -->
-    <?= view('partials/sidebar') ?>
+    <?= view('partials/sidebar', ['username' => $username ?? 'Utilisateur', 'phone_number' => $phone_number ?? '']) ?>
 
     <!-- Main -->
     <div class="main">
-        <div class="topbar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-            <div class="topbar-title" style="font-size:20px; font-weight:600;">💰 Montants à envoyer par Opérateur</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <div style="font-size:20px; font-weight:600;">💰 Montants à envoyer par Opérateur</div>
             <div>
                 <a href="<?= base_url('gains/export-montants-csv') ?>" class="btn btn-success">
                     📥 Exporter CSV
@@ -224,13 +218,13 @@
         <div class="row">
             <?php if (!empty($montantsParOperateur)): ?>
                 <?php 
-                $totalGeneral = $resumeGeneral['total_a_envoyer'] + $resumeGeneral['total_a_reverser'];
+                $totalGeneral = ($resumeGeneral['total_a_envoyer'] ?? 0) + ($resumeGeneral['total_a_reverser'] ?? 0);
                 $colors = ['primary', 'warning', 'info', 'danger'];
                 $idx = 0;
                 ?>
                 <?php foreach ($montantsParOperateur as $op): ?>
                     <?php 
-                    $totalOp = $op['total_a_envoyer'] + $op['total_a_reverser'];
+                    $totalOp = ($op['total_a_envoyer'] ?? 0) + ($op['total_a_reverser'] ?? 0);
                     $pourcentage = $totalGeneral > 0 ? ($totalOp / $totalGeneral) * 100 : 0;
                     $badgeClass = strtolower(str_replace(' (VOUS)', '', $op['operateur'] ?? 'inconnu'));
                     $color = $colors[$idx % count($colors)];
@@ -280,12 +274,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <button class="btn btn-sm btn-outline-primary mt-3 w-100" 
-                                        data-bs-toggle="collapse" 
-                                        data-bs-target="#detail<?= $idx ?>">
-                                    📋 Voir les détails
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -305,7 +293,7 @@
             <div class="card-header">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <span>📊 Récapitulatif Détaillé</span>
-                    <span class="badge bg-primary"><?= count($montantsParOperateur) ?> opérateurs</span>
+                    <span class="badge bg-primary"><?= count($montantsParOperateur ?? []) ?> opérateurs</span>
                 </div>
             </div>
             <div class="card-body">
@@ -326,9 +314,9 @@
                         <tbody>
                             <?php if (!empty($montantsParOperateur)): ?>
                                 <?php 
-                                $totalGeneral = $resumeGeneral['total_a_envoyer'] + $resumeGeneral['total_a_reverser'];
+                                $totalGeneral = ($resumeGeneral['total_a_envoyer'] ?? 0) + ($resumeGeneral['total_a_reverser'] ?? 0);
                                 foreach ($montantsParOperateur as $op): 
-                                    $totalOp = $op['total_a_envoyer'] + $op['total_a_reverser'];
+                                    $totalOp = ($op['total_a_envoyer'] ?? 0) + ($op['total_a_reverser'] ?? 0);
                                     $pourcentage = $totalGeneral > 0 ? ($totalOp / $totalGeneral) * 100 : 0;
                                 ?>
                                 <tr>
@@ -366,67 +354,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Détails par opérateur -->
-        <?php if (!empty($montantsParOperateur)): ?>
-            <?php $idx = 0; foreach ($montantsParOperateur as $op): $idx++; ?>
-                <div class="collapse mt-3" id="detail<?= $idx ?>">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <span>
-                                <strong><?= esc($op['operateur'] ?? 'Inconnu') ?></strong>
-                                <span class="badge bg-secondary ms-2"><?= $op['nombre_transactions'] ?? 0 ?> transactions</span>
-                                <span class="badge bg-success ms-2">✅ <?= number_format($op['total_a_envoyer'] ?? 0, 0, ',', ' ') ?> Ar</span>
-                                <span class="badge bg-warning ms-2">❌ <?= number_format($op['total_a_reverser'] ?? 0, 0, ',', ' ') ?> Ar</span>
-                            </span>
-                            <button class="btn btn-sm btn-secondary" data-bs-toggle="collapse" data-bs-target="#detail<?= $idx ?>">✖ Fermer</button>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Client</th>
-                                            <th>Type</th>
-                                            <th class="text-end">Montant</th>
-                                            <th class="text-end">Frais</th>
-                                            <th class="text-end">Commission</th>
-                                            <th class="text-end">✅ Gardé</th>
-                                            <th class="text-end">❌ Reversé</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1; foreach ($op['details'] as $detail): ?>
-                                            <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?= $detail['client_id'] ?? 'N/A' ?></td>
-                                                <td><span class="badge bg-info"><?= ucfirst($detail['type']) ?></span></td>
-                                                <td class="text-end"><?= number_format($detail['montant'] ?? 0, 0, ',', ' ') ?> Ar</td>
-                                                <td class="text-end text-danger"><?= number_format($detail['frais'] ?? 0, 0, ',', ' ') ?> Ar</td>
-                                                <td class="text-end text-warning"><?= number_format($detail['commission'] ?? 0, 0, ',', ' ') ?> Ar</td>
-                                                <td class="text-end text-success"><?= number_format($detail['a_envoyer'] ?? 0, 0, ',', ' ') ?> Ar</td>
-                                                <td class="text-end text-warning"><?= number_format($detail['a_reverser'] ?? 0, 0, ',', ' ') ?> Ar</td>
-                                                <td><?= date('d/m/Y H:i', strtotime($detail['date'] ?? 'now')) ?></td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr class="table-success">
-                                            <td colspan="6" class="text-end"><strong>TOTAL</strong></td>
-                                            <td class="text-end"><strong><?= number_format($op['total_a_envoyer'] ?? 0, 0, ',', ' ') ?> Ar</strong></td>
-                                            <td class="text-end"><strong><?= number_format($op['total_a_reverser'] ?? 0, 0, ',', ' ') ?> Ar</strong></td>
-                                            <td></td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
 
     </div><!-- /main -->
 </div><!-- /app -->

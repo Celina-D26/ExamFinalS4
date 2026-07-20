@@ -6,7 +6,6 @@
     <title><?= $title ?? 'Situation des Gains' ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>" />
-    
     <style>
         :root {
             --c-primary: #2563eb;
@@ -20,15 +19,10 @@
             --c-danger: #ef4444;
             --radius: 8px;
         }
-
-        body {
-            margin: 0;
-            background: var(--c-bg);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
+        body { margin: 0; background: var(--c-bg); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         .app { display: flex; min-height: 100vh; }
         
+        /* Sidebar */
         .sidebar {
             width: 240px;
             min-height: 100vh;
@@ -43,7 +37,6 @@
             flex-direction: column;
             flex-shrink: 0;
         }
-
         .sidebar-brand {
             display: flex;
             align-items: center;
@@ -53,7 +46,6 @@
             border-bottom: 1px solid rgba(255,255,255,0.06);
             padding-bottom: 14px;
         }
-
         .logo-icon {
             background: var(--c-primary);
             border-radius: 6px;
@@ -67,7 +59,6 @@
         .logo-icon svg { fill: #fff; }
         .brand-name { font-weight: 700; font-size: 16px; color: #fff; }
         .brand-sub { font-size: 10px; opacity: 0.5; }
-
         .sidebar-section {
             font-size: 10px;
             text-transform: uppercase;
@@ -76,7 +67,6 @@
             margin: 16px 10px 8px 10px;
             font-weight: 600;
         }
-
         .nav-item {
             display: flex;
             align-items: center;
@@ -92,7 +82,6 @@
         .nav-item svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
         .nav-item:hover { background: rgba(255,255,255,0.06); color: #f1f5f9; }
         .nav-item.active { background: var(--c-primary); color: #fff; }
-
         .sidebar-bottom { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; }
         .avatar {
             width: 32px;
@@ -109,7 +98,6 @@
         }
         .user-info .name { font-weight: 500; font-size: 13px; color: #f1f5f9; }
         .user-info .role { font-size: 11px; color: #94a3b8; }
-
         .main { flex: 1; padding: 20px 24px 32px; overflow-y: auto; }
 
         .card {
@@ -142,36 +130,20 @@
         .kpi-label { font-size: 12px; color: var(--c-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
         .kpi-value { font-size: 24px; font-weight: 700; margin-top: 4px; }
 
-        .badge-operateur {
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        .badge-operateur.telma { background: #dbeafe; color: #1e40af; }
-        .badge-operateur.orange { background: #fef3c7; color: #92400e; }
-        .badge-operateur.airtel { background: #dcfce7; color: #166534; }
-        .badge-operateur.inconnu { background: #f3f4f6; color: #6b7280; }
-
-        .resume-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .resume-box .stat-item { text-align: center; padding: 10px; }
-        .resume-box .stat-item .number { font-size: 24px; font-weight: 700; }
-        .resume-box .stat-item .label { font-size: 11px; opacity: 0.8; }
+        .btn-primary { background: var(--c-primary); border: none; color: #fff; padding: 8px 16px; border-radius: var(--radius); font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-success { background: #22c55e; border: none; color: #fff; padding: 8px 16px; border-radius: var(--radius); font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-success:hover { background: #16a34a; }
+        .btn-secondary { background: #f3f4f6; border: 1px solid var(--c-border); color: var(--c-text); padding: 8px 16px; border-radius: var(--radius); font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-secondary:hover { background: #e5e7eb; }
 
         @media (max-width: 768px) {
             .sidebar { width: 60px; padding: 12px 8px; }
             .sidebar .brand-name, .sidebar .brand-sub, .sidebar .sidebar-section, 
-            .sidebar .nav-item span, .sidebar .nav-badge, .sidebar .user-info { display: none; }
+            .sidebar .nav-item span, .sidebar .user-info { display: none; }
             .sidebar .nav-item { justify-content: center; padding: 10px; }
             .sidebar .sidebar-brand { justify-content: center; }
             .main { padding: 12px 16px; }
-            .resume-box .stat-item .number { font-size: 18px; }
         }
     </style>
 </head>
@@ -179,12 +151,12 @@
 
 <div class="app">
     <!-- Sidebar -->
-    <?= view('partials/sidebar') ?>
+    <?= view('partials/sidebar', ['username' => $username ?? 'Utilisateur', 'phone_number' => $phone_number ?? '']) ?>
 
     <!-- Main -->
     <div class="main">
-        <div class="topbar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-            <div class="topbar-title" style="font-size:20px; font-weight:600;">💰 Situation des Gains</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <div style="font-size:20px; font-weight:600;">💰 Situation des Gains</div>
             <div>
                 <a href="<?= base_url('gains/montants') ?>" class="btn btn-primary">
                     📊 Montants par Opérateur
@@ -199,7 +171,7 @@
         <div class="kpi-grid">
             <div class="kpi-card">
                 <div class="kpi-label">Total des Gains</div>
-                <div class="kpi-value"><?= number_format($totalGains ?? 0, 2, ',', ' ') ?> Ar</div>
+                <div class="kpi-value"><?= number_format($totalGains ?? 0, 0, ',', ' ') ?> Ar</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-label">Nombre de Transactions</div>
@@ -213,7 +185,7 @@
                     if (!empty($gainsParOperateur['meme_operateur'])) {
                         $totalMeme = array_sum(array_column($gainsParOperateur['meme_operateur'], 'total_frais'));
                     }
-                    echo number_format($totalMeme, 2, ',', ' ');
+                    echo number_format($totalMeme, 0, ',', ' ');
                     ?> Ar
                 </div>
             </div>
@@ -225,7 +197,7 @@
                     if (!empty($gainsParOperateur['autre_operateur'])) {
                         $totalAutre = array_sum(array_column($gainsParOperateur['autre_operateur'], 'total_frais'));
                     }
-                    echo number_format($totalAutre, 2, ',', ' ');
+                    echo number_format($totalAutre, 0, ',', ' ');
                     ?> Ar
                 </div>
             </div>
@@ -248,7 +220,7 @@
                                     <tr>
                                         <td><span class="badge bg-primary"><?= ucfirst($g['type_operation']) ?></span></td>
                                         <td class="text-end"><?= $g['nombre'] ?></td>
-                                        <td class="text-end fw-bold text-success"><?= number_format($g['total_frais'], 2, ',', ' ') ?> Ar</td>
+                                        <td class="text-end fw-bold text-success"><?= number_format($g['total_frais'], 0, ',', ' ') ?> Ar</td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -256,7 +228,7 @@
                                     <tr class="table-success">
                                         <th>Total</th>
                                         <th class="text-end"><?= array_sum(array_column($gainsParOperateur['meme_operateur'], 'nombre')) ?></th>
-                                        <th class="text-end"><?= number_format(array_sum(array_column($gainsParOperateur['meme_operateur'], 'total_frais')), 2, ',', ' ') ?> Ar</th>
+                                        <th class="text-end"><?= number_format(array_sum(array_column($gainsParOperateur['meme_operateur'], 'total_frais')), 0, ',', ' ') ?> Ar</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -282,8 +254,8 @@
                                     <tr>
                                         <td><span class="badge bg-warning"><?= ucfirst($g['type_operation']) ?></span></td>
                                         <td class="text-end"><?= $g['nombre'] ?></td>
-                                        <td class="text-end fw-bold text-warning"><?= number_format($g['total_frais'], 2, ',', ' ') ?> Ar</td>
-                                        <td class="text-end"><?= number_format($g['total_commission'] ?? 0, 2, ',', ' ') ?> Ar</td>
+                                        <td class="text-end fw-bold text-warning"><?= number_format($g['total_frais'], 0, ',', ' ') ?> Ar</td>
+                                        <td class="text-end"><?= number_format($g['total_commission'] ?? 0, 0, ',', ' ') ?> Ar</td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -291,8 +263,8 @@
                                     <tr class="table-warning">
                                         <th>Total</th>
                                         <th class="text-end"><?= array_sum(array_column($gainsParOperateur['autre_operateur'], 'nombre')) ?></th>
-                                        <th class="text-end"><?= number_format(array_sum(array_column($gainsParOperateur['autre_operateur'], 'total_frais')), 2, ',', ' ') ?> Ar</th>
-                                        <th class="text-end"><?= number_format(array_sum(array_column($gainsParOperateur['autre_operateur'], 'total_commission')), 2, ',', ' ') ?> Ar</th>
+                                        <th class="text-end"><?= number_format(array_sum(array_column($gainsParOperateur['autre_operateur'], 'total_frais')), 0, ',', ' ') ?> Ar</th>
+                                        <th class="text-end"><?= number_format(array_sum(array_column($gainsParOperateur['autre_operateur'], 'total_commission')), 0, ',', ' ') ?> Ar</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -300,6 +272,52 @@
                             <p class="text-muted text-center">Aucun gain pour les autres opérateurs</p>
                         <?php endif; ?>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Détails des transactions -->
+        <div class="card">
+            <div class="card-header">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span>📋 Dernières transactions</span>
+                    <span class="badge bg-secondary"><?= count($gainsDetail ?? []) ?></span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Client</th>
+                                <th>Type</th>
+                                <th class="text-end">Montant</th>
+                                <th class="text-end">Frais</th>
+                                <th class="text-end">Commission</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($gainsDetail)): ?>
+                                <?php $i = 1; foreach ($gainsDetail as $tx): ?>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
+                                        <td><?= $tx['client_id'] ?? 'N/A' ?></td>
+                                        <td><span class="badge bg-info"><?= ucfirst($tx['type_operation'] ?? 'inconnu') ?></span></td>
+                                        <td class="text-end"><?= number_format($tx['montant'] ?? 0, 0, ',', ' ') ?> Ar</td>
+                                        <td class="text-end text-danger"><?= number_format($tx['frais_appliques'] ?? 0, 0, ',', ' ') ?> Ar</td>
+                                        <td class="text-end text-warning"><?= number_format($tx['commission_inter_operateur'] ?? 0, 0, ',', ' ') ?> Ar</td>
+                                        <td><?= date('d/m/Y H:i', strtotime($tx['created_at'] ?? 'now')) ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="7" class="text-center text-muted py-3">Aucune transaction</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

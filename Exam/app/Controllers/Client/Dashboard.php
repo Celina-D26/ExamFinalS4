@@ -36,7 +36,8 @@ class Dashboard extends Controller
         $client = $this->compteModel->getClientByPhone($phoneNumber);
         
         if (!$client) {
-            $client = $this->compteModel->insert([
+            // Créer un nouveau client
+            $clientData = [
                 'client_id' => 'CLT' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT),
                 'nom' => $this->session->get('username') ?? 'Utilisateur',
                 'prenom' => '',
@@ -51,20 +52,24 @@ class Dashboard extends Controller
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
+            
             $this->compteModel->insert($clientData);
+            
+            // Récupérer le client créé
             $client = $this->compteModel->getClientByPhone($phoneNumber);
         }
 
         // Récupérer les dernières transactions
-        $transactions = $this->transactionModel->getTransactionsClient($client['client_id'], 10);
-        $stats = $this->transactionModel->getStatsClient($client['client_id']);
+        $transactions = $this->transactionModel->getTransactionsClient($client['client_id'] ?? '', 10);
+        $stats = $this->transactionModel->getStatsClient($client['client_id'] ?? '');
 
         $data = [
             'title' => 'Mobile Money — Tableau de bord',
             'username' => $username,
             'phone_number' => $phoneNumber,
             'client' => $client,
-            'transactions' => $transactions
+            'transactions' => $transactions,
+            'stats' => $stats
         ];
 
         return view('client/dashboard', $data);
