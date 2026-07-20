@@ -1619,3 +1619,206 @@ in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
 14 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
 15 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
 ERROR - 2026-07-20 11:19:10 --> Erreur retrait: table transactions has no column named updated_at
+DEBUG - 2026-07-20 11:34:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:13 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:34:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:13 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:34:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:23 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:34:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:23 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:34:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:48 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:34:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:34:49 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:34:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:35:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:35:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:35:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:35:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:35:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:35:17 --> Barèmes récupérés: 0
+ERROR - 2026-07-20 11:39:50 --> table frais_baremes has no column named created_at
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/FraisSeeder.php(43): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\FraisSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+DEBUG - 2026-07-20 11:44:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:03 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:03 --> Données: []
+WARNING - 2026-07-20 11:44:03 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:04 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:04 --> Données: []
+WARNING - 2026-07-20 11:44:04 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:09 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:09 --> Données: []
+WARNING - 2026-07-20 11:44:09 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:14 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:14 --> Données: []
+WARNING - 2026-07-20 11:44:14 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:15 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:15 --> Données: []
+WARNING - 2026-07-20 11:44:15 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:16 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:16 --> Données: []
+WARNING - 2026-07-20 11:44:16 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:16 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:16 --> Données: []
+WARNING - 2026-07-20 11:44:16 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:17 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:17 --> Données: []
+WARNING - 2026-07-20 11:44:17 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:17 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:17 --> Données: []
+WARNING - 2026-07-20 11:44:17 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:17 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:17 --> Données: []
+WARNING - 2026-07-20 11:44:17 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:17 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:17 --> Données: []
+WARNING - 2026-07-20 11:44:17 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:19 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:19 --> Données: []
+WARNING - 2026-07-20 11:44:19 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:19 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:19 --> Données: []
+WARNING - 2026-07-20 11:44:19 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:19 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:19 --> Données: []
+WARNING - 2026-07-20 11:44:19 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:19 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:19 --> Données: []
+WARNING - 2026-07-20 11:44:19 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:19 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:19 --> Données: []
+WARNING - 2026-07-20 11:44:19 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:20 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:20 --> Données: []
+WARNING - 2026-07-20 11:44:20 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:20 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:20 --> Données: []
+WARNING - 2026-07-20 11:44:20 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:20 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:20 --> Données: []
+WARNING - 2026-07-20 11:44:20 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:44:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:44:35 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:44:35 --> Données: []
+WARNING - 2026-07-20 11:44:35 --> Aucun barème trouvé dans la base de données
+ERROR - 2026-07-20 11:45:02 --> table frais_baremes has no column named created_at
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/FraisSeeder.php(43): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\FraisSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+DEBUG - 2026-07-20 11:45:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:45:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:45:08 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:45:08 --> Données: []
+WARNING - 2026-07-20 11:45:08 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:45:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:45:13 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:45:13 --> Données: []
+WARNING - 2026-07-20 11:45:13 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:45:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:45:16 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:45:16 --> Données: []
+WARNING - 2026-07-20 11:45:16 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:46:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:46:47 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:46:47 --> Données: []
+WARNING - 2026-07-20 11:46:47 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:46:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:46:52 --> Recherche frais pour retrait - 1000
+DEBUG - 2026-07-20 11:46:52 --> Règle trouvée: null
+DEBUG - 2026-07-20 11:46:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:46:55 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:46:55 --> Données: []
+WARNING - 2026-07-20 11:46:55 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:46:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:46:55 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:46:55 --> Données: []
+WARNING - 2026-07-20 11:46:55 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:47:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:47:00 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:47:00 --> Données: []
+WARNING - 2026-07-20 11:47:00 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:47:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:47:00 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:47:00 --> Données: []
+WARNING - 2026-07-20 11:47:00 --> Aucun barème trouvé dans la base de données
+DEBUG - 2026-07-20 11:47:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:47:02 --> Recherche frais pour retrait - 1000
+DEBUG - 2026-07-20 11:47:02 --> Règle trouvée: null
+DEBUG - 2026-07-20 11:47:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:47:05 --> Barèmes récupérés: 0
+DEBUG - 2026-07-20 11:47:05 --> Données: []
+WARNING - 2026-07-20 11:47:05 --> Aucun barème trouvé dans la base de données
+ERROR - 2026-07-20 11:51:30 --> table frais_baremes has no column named created_at
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/FraisSeeder.php(43): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\FraisSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+DEBUG - 2026-07-20 11:51:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:51:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:51:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:51:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:51:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:51:51 --> Recherche frais pour retrait - 100
+DEBUG - 2026-07-20 11:51:51 --> Règle trouvée: null
+DEBUG - 2026-07-20 11:51:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 11:51:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

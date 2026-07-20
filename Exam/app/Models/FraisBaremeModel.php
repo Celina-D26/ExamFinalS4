@@ -19,13 +19,18 @@ class FraisBaremeModel extends Model
     public function getFrais(string $typeOperation, float $montant): float
     {
         try {
+            log_message('debug', 'Recherche frais pour ' . $typeOperation . ' - ' . $montant);
+            
             $rule = $this->where('type_operation', $typeOperation)
                          ->where('montant_min <=', $montant)
                          ->where('montant_max >=', $montant)
                          ->first();
 
+            log_message('debug', 'Règle trouvée: ' . json_encode($rule));
+            
             return $rule ? (float)$rule['frais'] : 0.0;
         } catch (\Exception $e) {
+            log_message('error', 'Erreur getFrais: ' . $e->getMessage());
             return 0.0;
         }
     }
@@ -38,18 +43,19 @@ class FraisBaremeModel extends Model
         try {
             $db = \Config\Database::connect();
 
-            // Vérifie si la table operations existe
-            if (!$db->tableExists('operations')) {
+            // Vérifie si la table transactions existe
+            if (!$db->tableExists('transactions')) {
                 return 0.0;
             }
 
-            $builder = $db->table('operations');
+            $builder = $db->table('transactions');
             $builder->selectSum('frais_appliques', 'total_gains');
             $builder->whereIn('type_operation', ['retrait', 'transfert']);
             
             $query = $builder->get()->getRow();
             return $query && isset($query->total_gains) ? (float)$query->total_gains : 0.0;
         } catch (\Exception $e) {
+            log_message('error', 'Erreur getGainsTotaux: ' . $e->getMessage());
             return 0.0;
         }
     }
@@ -64,6 +70,22 @@ class FraisBaremeModel extends Model
                         ->orderBy('montant_min', 'ASC')
                         ->findAll();
         } catch (\Exception $e) {
+            log_message('error', 'Erreur getBaremesByType: ' . $e->getMessage());
+            return [];
+        }
+    }
+
+    /**
+     * Récupère tous les barèmes
+     */
+    public function getAllBaremes(): array
+    {
+        try {
+            return $this->orderBy('type_operation', 'ASC')
+                        ->orderBy('montant_min', 'ASC')
+                        ->findAll();
+        } catch (\Exception $e) {
+            log_message('error', 'Erreur getAllBaremes: ' . $e->getMessage());
             return [];
         }
     }

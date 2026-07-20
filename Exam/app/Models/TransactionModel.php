@@ -12,7 +12,8 @@ class TransactionModel extends Model
         'client_id', 'type_operation', 'montant', 'frais_appliques',
         'montant_net', 'solde_apres', 'reference', 'description', 'status'
     ];
-    protected $useTimestamps    = true;
+    // Désactiver les timestamps pour éviter l'erreur
+    protected $useTimestamps    = false;
     protected $createdField     = 'created_at';
     protected $updatedField     = 'updated_at';
 
@@ -39,6 +40,9 @@ class TransactionModel extends Model
             if (!isset($data['status'])) {
                 $data['status'] = 'completed';
             }
+            
+            // Ajouter la date de création manuellement
+            $data['created_at'] = date('Y-m-d H:i:s');
             
             // Vérifier que client_id existe
             if (!isset($data['client_id']) || empty($data['client_id'])) {
@@ -72,8 +76,6 @@ class TransactionModel extends Model
             $transactions = $this->where('client_id', $clientId)
                                  ->orderBy('created_at', 'DESC')
                                  ->findAll($limit);
-            
-            log_message('debug', 'Transactions trouvées pour client ' . $clientId . ': ' . count($transactions));
             
             return $transactions;
         } catch (\Exception $e) {
