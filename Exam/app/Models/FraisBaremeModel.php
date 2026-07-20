@@ -18,12 +18,16 @@ class FraisBaremeModel extends Model
      */
     public function getFrais(string $typeOperation, float $montant): float
     {
-        $rule = $this->where('type_operation', $typeOperation)
-                     ->where('montant_min <=', $montant)
-                     ->where('montant_max >=', $montant)
-                     ->first();
+        try {
+            $rule = $this->where('type_operation', $typeOperation)
+                         ->where('montant_min <=', $montant)
+                         ->where('montant_max >=', $montant)
+                         ->first();
 
-        return $rule ? (float)$rule['frais'] : 0.0;
+            return $rule ? (float)$rule['frais'] : 0.0;
+        } catch (\Exception $e) {
+            return 0.0;
+        }
     }
 
     /**
@@ -31,19 +35,23 @@ class FraisBaremeModel extends Model
      */
     public function getGainsTotaux(): float
     {
-        $db = \Config\Database::connect();
+        try {
+            $db = \Config\Database::connect();
 
-        // Vérifie si la table operations existe
-        if (!$db->tableExists('operations')) {
+            // Vérifie si la table operations existe
+            if (!$db->tableExists('operations')) {
+                return 0.0;
+            }
+
+            $builder = $db->table('operations');
+            $builder->selectSum('frais_appliques', 'total_gains');
+            $builder->whereIn('type_operation', ['retrait', 'transfert']);
+            
+            $query = $builder->get()->getRow();
+            return $query && isset($query->total_gains) ? (float)$query->total_gains : 0.0;
+        } catch (\Exception $e) {
             return 0.0;
         }
-
-        $builder = $db->table('operations');
-        $builder->selectSum('frais_appliques', 'total_gains');
-        $builder->whereIn('type_operation', ['retrait', 'transfert']);
-        
-        $query = $builder->get()->getRow();
-        return $query && $query->total_gains ? (float)$query->total_gains : 0.0;
     }
 
     /**
@@ -51,8 +59,12 @@ class FraisBaremeModel extends Model
      */
     public function getBaremesByType(string $typeOperation): array
     {
-        return $this->where('type_operation', $typeOperation)
-                    ->orderBy('montant_min', 'ASC')
-                    ->findAll();
+        try {
+            return $this->where('type_operation', $typeOperation)
+                        ->orderBy('montant_min', 'ASC')
+                        ->findAll();
+        } catch (\Exception $e) {
+            return [];
+        }
     }
 }

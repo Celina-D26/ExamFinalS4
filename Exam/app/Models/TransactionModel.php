@@ -14,53 +14,101 @@ class TransactionModel extends Model
     ];
     protected $useTimestamps    = true;
     protected $createdField     = 'created_at';
-    protected $updatedField     = null;
+    protected $updatedField     = 'updated_at';
+
+    /**
+     * Génère une référence unique
+     */
+    public function generateReference(): string
+    {
+        return 'TXN' . date('Ymd') . rand(100000, 999999);
+    }
 
     /**
      * Enregistre une transaction
      */
     public function enregistrerTransaction(array $data): bool
     {
-        return $this->insert($data);
+        try {
+            // Générer une référence si non fournie
+            if (!isset($data['reference']) || empty($data['reference'])) {
+                $data['reference'] = $this->generateReference();
+            }
+            
+            // Définir le statut par défaut
+            if (!isset($data['status'])) {
+                $data['status'] = 'completed';
+            }
+            
+            // Vérifier que client_id existe
+            if (!isset($data['client_id']) || empty($data['client_id'])) {
+                log_message('error', 'Client ID manquant pour la transaction');
+                return false;
+            }
+            
+            // Insérer la transaction
+            $result = $this->insert($data);
+            
+            if ($result) {
+                log_message('debug', 'Transaction enregistrée: ' . json_encode($data));
+                return true;
+            }
+            
+            log_message('error', 'Échec de l\'insertion de la transaction: ' . json_encode($data));
+            return false;
+        } catch (\Exception $e) {
+            log_message('error', 'Erreur lors de l\'enregistrement de la transaction: ' . $e->getMessage());
+            log_message('error', 'Data: ' . json_encode($data));
+            return false;
+        }
     }
 
     /**
      * Récupère les transactions d'un client
      */
-    public function getTransactionsClient(string $clientId, int $limit = 10, int $offset = 0): array
+    public function getTransactionsClient(string $clientId, int $limit = 50): array
     {
-        return $this->where('client_id', $clientId)
-                    ->orderBy('created_at', 'DESC')
-                    ->findAll($limit, $offset);
+        try {
+            $transactions = $this->where('client_id', $clientId)
+                                 ->orderBy('created_at', 'DESC')
+                                 ->findAll($limit);
+            
+            log_message('debug', 'Transactions trouvées pour client ' . $clientId . ': ' . count($transactions));
+            
+            return $transactions;
+        } catch (\Exception $e) {
+            log_message('error', 'Erreur getTransactionsClient: ' . $e->getMessage());
+            return [];
+        }
     }
 
     /**
      * Récupère les transactions par type
      */
-    public function getTransactionsByType(string $type, int $limit = 10): array
+    public function getTransactionsByType(string $clientId, string $type, int $limit = 50): array
     {
-        return $this->where('type_operation', $type)
-                    ->orderBy('created_at', 'DESC')
-                    ->findAll($limit);
+        try {
+            return $this->where('client_id', $clientId)
+                        ->where('type_operation', $type)
+                        ->orderBy('created_at', 'DESC')
+                        ->findAll($limit);
+        } catch (\Exception $e) {
+            log_message('error', 'Erreur getTransactionsByType: ' . $e->getMessage());
+            return [];
+        }
     }
 
     /**
-     * Récupère les statistiques des transactions
+     * Récupère toutes les transactions
      */
-    public function getStats(): array
+    public function getAllTransactions(int $limit = 100): array
     {
-        $stats = $this->select('
-            COUNT(*) as total_transactions,
-            SUM(montant) as total_montant,
-            SUM(frais_appliques) as total_frais,
-            SUM(montant_net) as total_net
-        ')->first();
-
-        return $stats ?? [
-            'total_transactions' => 0,
-            'total_montant' => 0,
-            'total_frais' => 0,
-            'total_net' => 0
-        ];
+        try {
+            return $this->orderBy('created_at', 'DESC')
+                        ->findAll($limit);
+        } catch (\Exception $e) {
+            log_message('error', 'Erreur getAllTransactions: ' . $e->getMessage());
+            return [];
+        }
     }
 }

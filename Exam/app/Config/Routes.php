@@ -4,37 +4,35 @@ namespace Config;
 
 $routes = Services::routes();
 
-if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
-    require SYSTEMPATH . 'Config/Routes.php';
-}
-
-$routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Login');
 $routes->setDefaultMethod('index');
-$routes->setTranslateURIDashes(false);
-$routes->set404Override();
 
-// Routes d'authentification
+// Routes publiques
 $routes->get('/', 'Login::index');
 $routes->get('login', 'Login::index');
 $routes->post('login/authenticate', 'Login::authenticate');
 $routes->get('logout', 'Login::logout');
 
-// Routes protégées
-$routes->get('dashboard', 'Dashboard::index');
-$routes->get('users', 'Users::list');
+// Routes client
+$routes->group('client', ['filter' => 'auth'], function($routes) {
+    $routes->get('dashboard', 'Client\Dashboard::index');
+    $routes->get('operations', 'Client\Operations::index');
+    $routes->post('operations/deposit', 'Client\Operations::deposit');
+    $routes->post('operations/withdrawal', 'Client\Operations::withdrawal');
+    $routes->post('operations/transfer', 'Client\Operations::transfer');
+    $routes->get('history', 'Client\Operations::history');
+});
 
-$routes->get('form', 'Form::index');
+// Route pour récupérer les barèmes (pour le calcul des frais)
+$routes->get('frais/baremes', 'FraisController::getBaremesAjax', ['filter' => 'auth']);
 
-// frais
-$routes->get('frais', 'FraisController::index');
-$routes->post('frais/simuler', 'FraisController::simuler');
-$routes->post('frais/enregistrer', 'FraisController::enregistrer');
+// Routes opérateur (existantes)
+$routes->get('comptes', 'ComptesController::index', ['filter' => 'auth']);
+$routes->get('frais', 'FraisController::index', ['filter' => 'auth']);
+$routes->post('frais/simuler', 'FraisController::simuler', ['filter' => 'auth']);
+$routes->post('frais/enregistrer', 'FraisController::enregistrer', ['filter' => 'auth']);
 
-
-// Routes pour les comptes clients
-$routes->get('comptes', 'ComptesController::index');
-$routes->get('comptes/detail/(:any)', 'ComptesController::detail/$1');
-// Si vous voulez que toutes les autres routes soient protégées
-// $routes->get('(:any)', 'Dashboard::index/$1');
-
+// Redirection
+$routes->get('dashboard', 'Client\Dashboard::index', ['filter' => 'auth']);
+// Route de debug (à supprimer après)
+$routes->get('client/debug', 'Client\Operations::debug', ['filter' => 'auth']);

@@ -7,10 +7,12 @@ use App\Models\FraisBaremeModel;
 class FraisController extends BaseController
 {
     protected $fraisModel;
+    protected $session;
 
     public function __construct()
     {
         $this->fraisModel = new FraisBaremeModel();
+        $this->session = \Config\Services::session();
     }
 
     /**
@@ -19,7 +21,7 @@ class FraisController extends BaseController
     public function index()
     {
         // Récupérer l'utilisateur connecté pour le sidebar
-        $userData = session()->get('user_data');
+        $userData = $this->session->get('user_data');
         $username = $userData['username'] ?? 'Utilisateur';
         $phoneNumber = $userData['phone_number'] ?? '';
 
@@ -48,7 +50,7 @@ class FraisController extends BaseController
         $frais = $this->fraisModel->getFrais($typeOperation, $montant);
 
         // Récupérer l'utilisateur connecté pour le sidebar
-        $userData = session()->get('user_data');
+        $userData = $this->session->get('user_data');
         $username = $userData['username'] ?? 'Utilisateur';
         $phoneNumber = $userData['phone_number'] ?? '';
 
@@ -89,5 +91,28 @@ class FraisController extends BaseController
         }
 
         return redirect()->to('/frais')->with('success', $message);
+    }
+
+    /**
+     * Récupère les barèmes pour les requêtes AJAX
+     */
+    public function getBaremesAjax()
+    {
+        if (!$this->session->get('logged_in')) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Non authentifié']);
+        }
+
+        try {
+            $baremes = $this->fraisModel->findAll();
+            return $this->response->setJSON([
+                'success' => true,
+                'data' => $baremes
+            ]);
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
     }
 }

@@ -1,0 +1,98 @@
+<?php
+
+namespace App\Database\Migrations;
+
+use CodeIgniter\Database\Migration;
+
+class CreateComptesClientsTable extends Migration
+{
+    public function up()
+    {
+        $this->forge->dropTable('comptes_clients', true);
+        
+        $this->forge->addField([
+            'id' => [
+                'type' => 'INTEGER',
+                'constraint' => 11,
+                'unsigned' => true,
+                'auto_increment' => true,
+            ],
+            'client_id' => [
+                'type' => 'VARCHAR',
+                'constraint' => 20,
+                'unique' => true,
+            ],
+            'nom' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+                'null' => true,
+            ],
+            'prenom' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+                'null' => true,
+            ],
+            'phone_number' => [
+                'type' => 'VARCHAR',
+                'constraint' => 20,
+                'unique' => true,
+            ],
+            'email' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+                'null' => true,
+            ],
+            'solde' => [
+                'type' => 'DECIMAL',
+                'constraint' => '15,2',
+                'default' => 0,
+            ],
+            'total_depots' => [
+                'type' => 'DECIMAL',
+                'constraint' => '15,2',
+                'default' => 0,
+            ],
+            'total_retraits' => [
+                'type' => 'DECIMAL',
+                'constraint' => '15,2',
+                'default' => 0,
+            ],
+            'total_transferts' => [
+                'type' => 'DECIMAL',
+                'constraint' => '15,2',
+                'default' => 0,
+            ],
+            'total_frais_payes' => [
+                'type' => 'DECIMAL',
+                'constraint' => '15,2',
+                'default' => 0,
+            ],
+            'status' => [
+                'type' => 'VARCHAR',
+                'constraint' => 20,
+                'default' => 'actif',
+            ],
+            'created_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+            'updated_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+        ]);
+
+        $this->forge->addKey('id', true);
+        $this->forge->addKey('client_id');
+        $this->forge->addKey('phone_number');
+        $this->forge->createTable('comptes_clients');
+        
+        echo "✅ Table 'comptes_clients' créée avec succès !\n";
+    }
+
+    public function down()
+    {
+        $this->forge->dropTable('comptes_clients', true);
+        echo "✅ Table 'comptes_clients' supprimée !\n";
+    }
+}

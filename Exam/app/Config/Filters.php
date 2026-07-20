@@ -22,20 +22,20 @@ class Filters extends BaseConfig
 
     public $globals = [
         'before' => [
-            // ON ENLÈVE 'csrf' D'ICI pour éviter de bloquer les affichages de page GET
+            // 'honeypot',
+            // 'csrf',  // <-- COMMENTEZ CETTE LIGNE POUR DÉSACTIVER CSRF
+            // 'invalidchars',
         ],
         'after' => [
             'toolbar',
+            // 'honeypot',
+            // 'secureheaders',
         ],
     ];
 
-    // Le CSRF s'applique uniquement lors des soumissions de formulaires (POST)
-    public $methods = [
-        'post' => ['csrf'],
-    ];
+    public $methods = [];
 
-    // Protection des routes via le filtre Auth
     public $filters = [
-        'auth' => ['before' => ['dashboard', 'users', 'form']], 
+        'auth' => ['before' => ['dashboard', 'client/*', 'comptes', 'frais']],
     ];
 }
