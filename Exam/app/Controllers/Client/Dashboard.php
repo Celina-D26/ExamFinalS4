@@ -24,16 +24,19 @@ class Dashboard extends Controller
 
     public function index()
     {
+        // Vérifier si l'utilisateur est connecté
         if (!$this->session->get('logged_in')) {
             return redirect()->to('/login');
         }
 
         $phoneNumber = $this->session->get('phone_number');
+        $username = $this->session->get('username') ?? 'Utilisateur';
+        
+        // Récupérer le client
         $client = $this->compteModel->getClientByPhone($phoneNumber);
         
         if (!$client) {
-            // Créer un client par défaut si non trouvé
-            $clientData = [
+            $client = $this->compteModel->insert([
                 'client_id' => 'CLT' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT),
                 'nom' => $this->session->get('username') ?? 'Utilisateur',
                 'prenom' => '',
@@ -52,11 +55,13 @@ class Dashboard extends Controller
             $client = $this->compteModel->getClientByPhone($phoneNumber);
         }
 
-        $transactions = $this->transactionModel->getTransactionsClient($client['client_id'] ?? '', 10);
+        // Récupérer les dernières transactions
+        $transactions = $this->transactionModel->getTransactionsClient($client['client_id'], 10);
+        $stats = $this->transactionModel->getStatsClient($client['client_id']);
 
         $data = [
             'title' => 'Mobile Money — Tableau de bord',
-            'username' => $this->session->get('username'),
+            'username' => $username,
             'phone_number' => $phoneNumber,
             'client' => $client,
             'transactions' => $transactions
