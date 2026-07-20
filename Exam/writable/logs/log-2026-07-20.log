@@ -3461,3 +3461,442 @@ in SYSTEMPATH/Database/SQLite3/Connection.php on line 164.
 12 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
 13 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
 ERROR - 2026-07-20 16:16:06 --> Erreur getGainsParOperateur: Unable to prepare statement: no such column: commission_inter_operateur
+DEBUG - 2026-07-20 16:49:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:49:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:49:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:49:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:51:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:53:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:53:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:53:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:53:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:54:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:54:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:54:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 16:54:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 16:54:33 --> Unable to prepare statement: no such column: commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 164.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(164): SQLite3->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Models/GainsModel.php(33): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/GainsController.php(19): App\Models\GainsModel->getGainsParOperateur()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\GainsController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 16:54:33 --> Erreur getGainsParOperateur: Unable to prepare statement: no such column: commission_inter_operateur
+ERROR - 2026-07-20 17:00:12 --> table frais_baremes has no column named created_at
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/FraisSeeder.php(43): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\FraisSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 17:02:09 --> table prefixes has no column named operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/PrefixeSeeder.php(72): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\PrefixeSeeder->run()
+ 7 APPPATH/Database/Seeds/DatabaseSeeder.php(17): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\DatabaseSeeder->run()
+ 9 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+10 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+11 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+12 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+13 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+14 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 17:02:35 --> table prefixes has no column named operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/PrefixeSeeder.php(72): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\PrefixeSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 17:02:35 --> table frais_baremes has no column named created_at
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/FraisSeeder.php(43): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\FraisSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 17:02:36 --> table transactions has no column named commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/TransactionSeeder.php(122): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\TransactionSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+DEBUG - 2026-07-20 17:02:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 17:02:54 --> Unable to prepare statement: no such column: commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 164.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(164): SQLite3->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Models/GainsModel.php(33): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/GainsController.php(19): App\Models\GainsModel->getGainsParOperateur()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\GainsController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 17:02:54 --> Erreur getGainsParOperateur: Unable to prepare statement: no such column: commission_inter_operateur
+DEBUG - 2026-07-20 17:02:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:02:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:03:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:03:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:03:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:03:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:03:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:03:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:03:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:03:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:03:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:03:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 17:03:10 --> Unable to prepare statement: no such column: commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 164.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(164): SQLite3->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Models/GainsModel.php(33): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/GainsController.php(19): App\Models\GainsModel->getGainsParOperateur()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\GainsController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 17:03:10 --> Erreur getGainsParOperateur: Unable to prepare statement: no such column: commission_inter_operateur
+DEBUG - 2026-07-20 17:03:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 17:03:11 --> Unable to prepare statement: no such column: commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 164.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(164): SQLite3->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Models/GainsModel.php(33): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/GainsController.php(19): App\Models\GainsModel->getGainsParOperateur()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\GainsController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 17:03:11 --> Erreur getGainsParOperateur: Unable to prepare statement: no such column: commission_inter_operateur
+DEBUG - 2026-07-20 17:03:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 17:03:11 --> Unable to prepare statement: no such column: commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 164.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(164): SQLite3->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Models/GainsModel.php(33): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/GainsController.php(19): App\Models\GainsModel->getGainsParOperateur()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\GainsController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 17:03:11 --> Erreur getGainsParOperateur: Unable to prepare statement: no such column: commission_inter_operateur
+DEBUG - 2026-07-20 17:03:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 17:03:11 --> Unable to prepare statement: no such column: commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 164.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(164): SQLite3->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Models/GainsModel.php(33): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/GainsController.php(19): App\Models\GainsModel->getGainsParOperateur()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\GainsController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 17:03:11 --> Erreur getGainsParOperateur: Unable to prepare statement: no such column: commission_inter_operateur
+DEBUG - 2026-07-20 17:03:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 17:03:12 --> Unable to prepare statement: no such column: commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 164.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(164): SQLite3->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Models/GainsModel.php(33): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/GainsController.php(19): App\Models\GainsModel->getGainsParOperateur()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\GainsController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 17:03:12 --> Erreur getGainsParOperateur: Unable to prepare statement: no such column: commission_inter_operateur
+ERROR - 2026-07-20 17:07:50 --> table `users` already exists
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/Forge.php(570): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Migrations/2026-07-20-062703_CreateUsersTable.php(55): CodeIgniter\Database\Forge->createTable()
+ 6 SYSTEMPATH/Database/MigrationRunner.php(1014): App\Database\Migrations\CreateUsersTable->up()
+ 7 SYSTEMPATH/Database/MigrationRunner.php(202): CodeIgniter\Database\MigrationRunner->migrate()
+ 8 SYSTEMPATH/Commands/Database/Migrate.php(89): CodeIgniter\Database\MigrationRunner->latest()
+ 9 SYSTEMPATH/CLI/SignalTrait.php(245): CodeIgniter\Commands\Database\Migrate::{closure:CodeIgniter\Commands\Database\Migrate::run():88}()
+10 SYSTEMPATH/Commands/Database/Migrate.php(88): CodeIgniter\Commands\Database\Migrate->withSignalsBlocked()
+11 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Migrate->run()
+12 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+13 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+14 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+15 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 17:08:49 --> table prefixes has no column named operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/PrefixeSeeder.php(72): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\PrefixeSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 17:08:49 --> table frais_baremes has no column named created_at
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/FraisSeeder.php(43): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\FraisSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 17:08:49 --> table transactions has no column named commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/TransactionSeeder.php(122): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\TransactionSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 17:09:18 --> table prefixes has no column named operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/PrefixeSeeder.php(72): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\PrefixeSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 17:09:18 --> table frais_baremes has no column named created_at
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/FraisSeeder.php(43): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\FraisSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-07-20 17:09:18 --> table transactions has no column named commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Database/Seeds/TransactionSeeder.php(122): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/Database/Seeder.php(155): App\Database\Seeds\TransactionSeeder->run()
+ 7 SYSTEMPATH/Commands/Database/Seed.php(79): CodeIgniter\Database\Seeder->call()
+ 8 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 9 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+10 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+11 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+12 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+DEBUG - 2026-07-20 17:16:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:16:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:16:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:16:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:16:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:21:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:21:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:21:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:21:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:21:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:21:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:21:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:21:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:21:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 17:21:49 --> Unable to prepare statement: no such column: commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 164.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(164): SQLite3->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Models/GainsModel.php(33): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/GainsController.php(19): App\Models\GainsModel->getGainsParOperateur()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\GainsController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 17:21:49 --> Erreur getGainsParOperateur: Unable to prepare statement: no such column: commission_inter_operateur
+DEBUG - 2026-07-20 17:21:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 17:21:53 --> Unable to prepare statement: no such column: commission_inter_operateur
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 164.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(164): SQLite3->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 APPPATH/Models/GainsModel.php(33): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/GainsController.php(19): App\Models\GainsModel->getGainsParOperateur()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\GainsController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 17:21:53 --> Erreur getGainsParOperateur: Unable to prepare statement: no such column: commission_inter_operateur
+DEBUG - 2026-07-20 17:23:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:23:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 17:24:06 --> table transactions has no column named commission
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(899): CodeIgniter\Model->doInsert()
+ 7 SYSTEMPATH/Model.php(668): CodeIgniter\BaseModel->insert()
+ 8 APPPATH/Models/TransactionModel.php(59): CodeIgniter\Model->insert()
+ 9 APPPATH/Controllers/Client/Operations.php(86): App\Models\TransactionModel->enregistrerTransaction()
+10 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Client\Operations->deposit()
+11 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 17:24:06 --> Erreur lors de l'enregistrement: table transactions has no column named commission
+DEBUG - 2026-07-20 17:24:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:13 --> Recherche frais pour retrait - 2000
+DEBUG - 2026-07-20 17:24:13 --> Règle trouvée: {"id":22,"type_operation":"retrait","montant_min":1001,"montant_max":5000,"frais":75}
+ERROR - 2026-07-20 17:24:13 --> table transactions has no column named commission
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(899): CodeIgniter\Model->doInsert()
+ 7 SYSTEMPATH/Model.php(668): CodeIgniter\BaseModel->insert()
+ 8 APPPATH/Models/TransactionModel.php(59): CodeIgniter\Model->insert()
+ 9 APPPATH/Controllers/Client/Operations.php(161): App\Models\TransactionModel->enregistrerTransaction()
+10 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Client\Operations->withdrawal()
+11 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 17:24:13 --> Erreur lors de l'enregistrement: table transactions has no column named commission
+DEBUG - 2026-07-20 17:24:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:38 --> Recherche frais pour retrait - 5000
+DEBUG - 2026-07-20 17:24:38 --> Règle trouvée: {"id":22,"type_operation":"retrait","montant_min":1001,"montant_max":5000,"frais":75}
+ERROR - 2026-07-20 17:24:38 --> table transactions has no column named commission
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(899): CodeIgniter\Model->doInsert()
+ 7 SYSTEMPATH/Model.php(668): CodeIgniter\BaseModel->insert()
+ 8 APPPATH/Models/TransactionModel.php(59): CodeIgniter\Model->insert()
+ 9 APPPATH/Controllers/Client/Operations.php(161): App\Models\TransactionModel->enregistrerTransaction()
+10 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Client\Operations->withdrawal()
+11 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH/index.php(62): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH/rewrite.php(44): require_once('/opt/lampp/htdocs/S4/Perpa-exam/Exam/Exam/public/index.php')
+ERROR - 2026-07-20 17:24:38 --> Erreur lors de l'enregistrement: table transactions has no column named commission
+DEBUG - 2026-07-20 17:24:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 17:24:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
