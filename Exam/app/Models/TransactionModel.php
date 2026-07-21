@@ -9,9 +9,18 @@ class TransactionModel extends Model
     protected $table = 'transactions';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'client_id', 'type_operation', 'montant', 'frais_appliques',
-        'montant_net', 'solde_apres', 'reference', 'description', 'status',
-        'commission', 'include_fees', 'is_multiple', 'destinations', 'operateur_id'
+        'client_id', 
+        'type_operation', 
+        'montant', 
+        'frais_appliques',
+        'commission_inter_operateur',  // Changé de 'commission' à 'commission_inter_operateur'
+        'montant_net', 
+        'solde_apres', 
+        'reference', 
+        'description', 
+        'status',
+        'operateur_destinataire',      // Ajouté pour les transferts inter-opérateurs
+        'created_at'
     ];
     protected $useTimestamps = false;
     protected $createdField = 'created_at';
@@ -29,24 +38,15 @@ class TransactionModel extends Model
             }
             
             if (!isset($data['status'])) {
-                $data['status'] = 'completed';
+                $data['status'] = 'complete';
             }
             
             // Définir les valeurs par défaut
-            if (!isset($data['commission'])) {
-                $data['commission'] = 0;
+            if (!isset($data['commission_inter_operateur'])) {
+                $data['commission_inter_operateur'] = 0;
             }
-            if (!isset($data['include_fees'])) {
-                $data['include_fees'] = 0;
-            }
-            if (!isset($data['is_multiple'])) {
-                $data['is_multiple'] = 0;
-            }
-            if (!isset($data['destinations'])) {
-                $data['destinations'] = null;
-            }
-            if (!isset($data['operateur_id'])) {
-                $data['operateur_id'] = null;
+            if (!isset($data['operateur_destinataire'])) {
+                $data['operateur_destinataire'] = null;
             }
             
             $data['created_at'] = date('Y-m-d H:i:s');
@@ -101,6 +101,18 @@ class TransactionModel extends Model
                         ->findAll($limit);
         } catch (\Exception $e) {
             return [];
+        }
+    }
+
+    // Ajouter cette méthode pour compter par type
+    public function countByType(string $clientId, string $type): int
+    {
+        try {
+            return $this->where('client_id', $clientId)
+                        ->where('type_operation', $type)
+                        ->countAllResults();
+        } catch (\Exception $e) {
+            return 0;
         }
     }
 }
