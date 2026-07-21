@@ -22,10 +22,12 @@ class Dashboard extends Controller
             return redirect()->to('/login');
         }
 
-        return view('dashboard/index', [
+        $data = [
+            'title' => 'SysInfo — Tableau de bord',
             'username' => $this->session->get('username'),
-            'phone_number' => $this->session->get('phone_number'),
-            'title' => 'SysInfo — Tableau de bord'
-        ]);
+            'phone_number' => $this->session->get('phone_number')
+        ];
+
+        return view('dashboard/index', $data);
     }
 }

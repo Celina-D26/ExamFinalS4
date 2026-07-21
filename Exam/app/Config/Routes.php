@@ -4,24 +4,69 @@ namespace Config;
 
 $routes = Services::routes();
 
-if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
-    require SYSTEMPATH . 'Config/Routes.php';
-}
-
-$routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Login');
 $routes->setDefaultMethod('index');
-$routes->setTranslateURIDashes(false);
-$routes->set404Override();
 
-// Routes d'authentification
+// Routes publiques
 $routes->get('/', 'Login::index');
 $routes->get('login', 'Login::index');
 $routes->post('login/authenticate', 'Login::authenticate');
 $routes->get('logout', 'Login::logout');
 
+<<<<<<< HEAD
 // Routes protégées
 $routes->get('dashboard', 'Dashboard::index');
 $routes->get('users', 'Users::list');
 $routes->get('form', 'Form::index');
 $routes->get('testdb', 'TestDB::index');
+=======
+// Dashboard principal
+$routes->get('dashboard', 'Dashboard::index', ['filter' => 'auth']);
+
+// Routes client
+$routes->group('client', ['filter' => 'auth'], function($routes) {
+    $routes->get('dashboard', 'Client\Dashboard::index');
+    $routes->get('operations', 'Client\Operations::index');
+    $routes->post('operations/deposit', 'Client\Operations::deposit');
+    $routes->post('operations/withdrawal', 'Client\Operations::withdrawal');
+    $routes->post('operations/transferSimple', 'Client\Operations::transferSimple');
+    $routes->post('operations/transferMultiple', 'Client\Operations::transferMultiple');
+    $routes->get('history', 'Client\Operations::history');
+});
+
+// Routes opérateur - Gestion des préfixes
+$routes->get('prefixes', 'PrefixeController::index', ['filter' => 'auth']);
+$routes->post('prefixes/ajouter', 'PrefixeController::ajouter', ['filter' => 'auth']);
+$routes->get('prefixes/modifier/(:num)', 'PrefixeController::modifier/$1', ['filter' => 'auth']);
+$routes->post('prefixes/update/(:num)', 'PrefixeController::update/$1', ['filter' => 'auth']);
+$routes->get('prefixes/supprimer/(:num)', 'PrefixeController::supprimer/$1', ['filter' => 'auth']);
+$routes->post('prefixes/toggle/(:num)', 'PrefixeController::toggleActif/$1', ['filter' => 'auth']);
+
+// Routes opérateur - Gestion des gains
+$routes->get('gains', 'GainsController::index', ['filter' => 'auth']);
+$routes->get('gains/montants', 'GainsController::montantsOperateurs', ['filter' => 'auth']);
+$routes->get('gains/export-csv', 'GainsController::exportCsv', ['filter' => 'auth']);
+$routes->get('gains/export-montants-csv', 'GainsController::exportMontantsCsv', ['filter' => 'auth']);
+
+// Routes pour les barèmes
+$routes->get('frais/baremes', 'FraisController::getBaremesAjax', ['filter' => 'auth']);
+$routes->get('frais', 'FraisController::index', ['filter' => 'auth']);
+$routes->post('frais/simuler', 'FraisController::simuler', ['filter' => 'auth']);
+
+// Routes opérateur - Comptes
+$routes->get('comptes', 'ComptesController::index', ['filter' => 'auth']);
+
+// Routes pour les opérations
+<<<<<<< HEAD
+$routes->post('client/transfer', 'Client\Operations::transferSimple');
+=======
+$routes->post('client/transfer', 'Client\Operations::transferSimple');
+// Routes Épargne
+$routes->get('epargne', 'EpargneController::index');
+$routes->post('epargne/ajouter', 'EpargneController::ajouter');
+$routes->post('epargne/retirer', 'EpargneController::retirer');
+$routes->post('epargne/configurer', 'EpargneController::configurer');
+$routes->get('epargne/toggle', 'EpargneController::toggle');
+$routes->get('epargne/admin', 'EpargneController::adminListe');
+>>>>>>> 208046f (dernier modif)
+>>>>>>> operation

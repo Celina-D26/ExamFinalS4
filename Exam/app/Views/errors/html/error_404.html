@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur 404</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
+</head>
+<body>
+    <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
+        <div>
+            <h1 style="font-size:72px;margin:0;color:var(--c-primary);">404</h1>
+            <h2 style="margin:10px 0;">Page non trouvée</h2>
+            <p style="color:var(--c-muted);">La page que vous cherchez n'existe pas.</p>
+            <a href="<?= site_url('dashboard') ?>" class="btn btn-primary" style="margin-top:20px;">
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
+</body>
+</html>

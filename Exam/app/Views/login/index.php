@@ -43,11 +43,22 @@
         .phone-input-group input {
             border: none;
             background: transparent;
+
             padding: 10px 14px;
             font-size: 14px;
             color: var(--c-text);
             outline: none;
             width: 100%;
+
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--c-muted);
+            border-left: 3px solid var(--c-primary);
+        }
+        .login-info strong {
+            color: var(--c-text);
+
         }
         .test-numbers {
             margin-top: 16px;

@@ -17,13 +17,13 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'auth'          => \App\Filters\Auth::class,  // ← Ajoutez cette ligne
+        'auth'          => \App\Filters\Auth::class,
     ];
 
     public $globals = [
         'before' => [
             // 'honeypot',
-            'csrf',
+            // 'csrf',  // <-- COMMENTEZ CETTE LIGNE POUR DÉSACTIVER CSRF
             // 'invalidchars',
         ],
         'after' => [
@@ -36,6 +36,6 @@ class Filters extends BaseConfig
     public $methods = [];
 
     public $filters = [
-        'auth' => ['before' => ['dashboard', 'users', 'form']],  // ← Protège ces routes
+        'auth' => ['before' => ['dashboard', 'client/*', 'comptes', 'frais']],
     ];
 }
