@@ -187,127 +187,141 @@ class Operations extends Controller
     }
 
     public function transferSimple()
-    {
-        if (!$this->session->get('logged_in')) {
-            return $this->response->setJSON(['success' => false, 'message' => 'Non authentifié']);
+{
+    if (!$this->session->get('logged_in')) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Non authentifié']);
+    }
+
+    $input = $this->request->getJSON(true);
+    if ($input) {
+        $amount = $input['amount'] ?? 0;
+        $destinationPhone = $input['destination_phone'] ?? '';
+        $includeFees = $input['include_fees'] ?? false;
+    } else {
+        $amount = $this->request->getPost('amount');
+        $destinationPhone = $this->request->getPost('destination_phone');
+        $includeFees = $this->request->getPost('include_fees') ?? false;
+    }
+    
+    if (!$amount || $amount <= 0) {
+        return $this->response->setJSON([
+            'success' => false, 
+            'message' => 'Montant invalide'
+        ]);
+    }
+
+    if (!$destinationPhone) {
+        return $this->response->setJSON([
+            'success' => false, 
+            'message' => 'Numéro de destination requis'
+        ]);
+    }
+
+    $phoneNumber = $this->session->get('phone_number');
+    $client = $this->compteModel->getClientByPhone($phoneNumber);
+    
+    if (!$client) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Client non trouvé']);
+    }
+
+    // Nettoyer le numéro de téléphone
+    $destinationPhone = preg_replace('/[^0-9]/', '', $destinationPhone);
+
+    try {
+        $destinationClient = $this->compteModel->getClientByPhone($destinationPhone);
+        if (!$destinationClient) {
+            return $this->response->setJSON([
+                'success' => false, 
+                'message' => 'Destinataire non trouvé'
+            ]);
         }
 
-        $input = $this->request->getJSON(true);
-        if ($input) {
-            $amount = $input['amount'] ?? 0;
-            $destinationPhone = $input['destination_phone'] ?? '';
-            $includeFees = $input['include_fees'] ?? false;
+        if ($destinationClient['client_id'] == $client['client_id']) {
+            return $this->response->setJSON([
+                'success' => false, 
+                'message' => 'Vous ne pouvez pas vous transférer à vous-même'
+            ]);
+        }
+        
+        $fee = $this->fraisModel->getFrais('transfert', $amount);
+        
+        if ($includeFees) {
+            $totalAmount = $amount;
+            $amountRecu = $amount - $fee;
         } else {
-            $amount = $this->request->getPost('amount');
-            $destinationPhone = $this->request->getPost('destination_phone');
-            $includeFees = $this->request->getPost('include_fees') ?? false;
+            $totalAmount = $amount + $fee;
+            $amountRecu = $amount;
         }
         
-        if (!$amount || $amount <= 0) {
-            return $this->response->setJSON([
-                'success' => false, 
-                'message' => 'Montant invalide'
-            ]);
-        }
-
-        if (!$destinationPhone) {
-            return $this->response->setJSON([
-                'success' => false, 
-                'message' => 'Numéro de destination requis'
-            ]);
-        }
-
-        $phoneNumber = $this->session->get('phone_number');
-        $client = $this->compteModel->getClientByPhone($phoneNumber);
-        
-        if (!$client) {
-            return $this->response->setJSON(['success' => false, 'message' => 'Client non trouvé']);
-        }
-
-        try {
-            $destinationClient = $this->compteModel->getClientByPhone($destinationPhone);
-            if (!$destinationClient) {
-                return $this->response->setJSON([
-                    'success' => false, 
-                    'message' => 'Destinataire non trouvé'
-                ]);
-            }
-
-            if ($destinationClient['client_id'] == $client['client_id']) {
-                return $this->response->setJSON([
-                    'success' => false, 
-                    'message' => 'Vous ne pouvez pas vous transférer à vous-même'
-                ]);
-            }
-            
-            $fee = $this->fraisModel->getFrais('transfert', $amount);
-            
-            if ($includeFees) {
-                $totalAmount = $amount;
-                $amountRecu = $amount - $fee;
-            } else {
-                $totalAmount = $amount + $fee;
-                $amountRecu = $amount;
-            }
-            
-            if ($client['solde'] < $totalAmount) {
-                return $this->response->setJSON([
-                    'success' => false,
-                    'message' => 'Solde insuffisant. Vous avez ' . number_format($client['solde'], 0, ',', ' ') . ' Ar'
-                ]);
-            }
-            
-            $nouveauSolde = $client['solde'] - $totalAmount;
-            $this->compteModel->update($client['id'], ['solde' => $nouveauSolde]);
-            $this->compteModel->update($client['id'], [
-                'total_transferts' => ($client['total_transferts'] ?? 0) + $amount,
-                'total_frais_payes' => ($client['total_frais_payes'] ?? 0) + $fee
-            ]);
-            
-            $nouveauSoldeDest = $destinationClient['solde'] + $amountRecu;
-            $this->compteModel->update($destinationClient['id'], ['solde' => $nouveauSoldeDest]);
-            
-            $this->transactionModel->enregistrerTransaction([
-                'client_id' => $client['client_id'],
-                'type_operation' => 'transfert',
-                'montant' => $amount,
-                'frais_appliques' => $fee,
-                'commission' => 0,
-                'montant_net' => -$totalAmount,
-                'solde_apres' => $nouveauSolde,
-                'include_fees' => $includeFees ? 1 : 0,
-                'is_multiple' => 0,
-                'destinations' => json_encode([$destinationPhone]),
-                'description' => "Transfert vers $destinationPhone"
-            ]);
-
-            $this->transactionModel->enregistrerTransaction([
-                'client_id' => $destinationClient['client_id'],
-                'type_operation' => 'depot',
-                'montant' => $amountRecu,
-                'frais_appliques' => 0,
-                'commission' => 0,
-                'montant_net' => $amountRecu,
-                'solde_apres' => $nouveauSoldeDest,
-                'include_fees' => 0,
-                'is_multiple' => 0,
-                'description' => "Transfert reçu de $phoneNumber"
-            ]);
-
-            return $this->response->setJSON([
-                'success' => true,
-                'message' => 'Transfert effectué avec succès',
-                'new_balance' => $nouveauSolde,
-                'fee' => $fee,
-                'amount_sent' => $amountRecu
-            ]);
-        } catch (\Exception $e) {
+        if ($client['solde'] < $totalAmount) {
             return $this->response->setJSON([
                 'success' => false,
-                'message' => 'Erreur: ' . $e->getMessage()
+                'message' => 'Solde insuffisant. Vous avez ' . number_format($client['solde'], 0, ',', ' ') . ' Ar'
             ]);
         }
+        
+        // Mettre à jour le solde de l'émetteur
+        $nouveauSolde = $client['solde'] - $totalAmount;
+        $this->compteModel->update($client['id'], ['solde' => $nouveauSolde]);
+        $this->compteModel->update($client['id'], [
+            'total_transferts' => ($client['total_transferts'] ?? 0) + $amount,
+            'total_frais_payes' => ($client['total_frais_payes'] ?? 0) + $fee
+        ]);
+        
+        // Mettre à jour le solde du destinataire
+        $nouveauSoldeDest = $destinationClient['solde'] + $amountRecu;
+        $this->compteModel->update($destinationClient['id'], ['solde' => $nouveauSoldeDest]);
+        
+        // ENREGISTRER LA TRANSACTION DE L'ÉMETTEUR
+        $transactionData = [
+            'client_id' => $client['client_id'],
+            'type_operation' => 'transfert',
+            'montant' => $amount,
+            'frais_appliques' => $fee,
+            'commission_inter_operateur' => 0,
+            'montant_net' => -$totalAmount,
+            'solde_apres' => $nouveauSolde,
+            'status' => 'complete',
+            'created_at' => date('Y-m-d H:i:s'),
+            'reference' => 'TRF-' . date('YmdHis'),
+            'description' => "Transfert vers $destinationPhone"
+        ];
+        
+        $this->transactionModel->insert($transactionData);
+        
+        // ENREGISTRER LA TRANSACTION DU DESTINATAIRE
+        $transactionDataDest = [
+            'client_id' => $destinationClient['client_id'],
+            'type_operation' => 'depot',
+            'montant' => $amountRecu,
+            'frais_appliques' => 0,
+            'commission_inter_operateur' => 0,
+            'montant_net' => $amountRecu,
+            'solde_apres' => $nouveauSoldeDest,
+            'status' => 'complete',
+            'created_at' => date('Y-m-d H:i:s'),
+            'reference' => 'TRF-' . date('YmdHis') . '-REC',
+            'description' => "Transfert reçu de $phoneNumber"
+        ];
+        
+        $this->transactionModel->insert($transactionDataDest);
+
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Transfert effectué avec succès',
+            'new_balance' => $nouveauSolde,
+            'fee' => $fee,
+            'amount_sent' => $amountRecu,
+            'destination_balance' => $nouveauSoldeDest
+        ]);
+    } catch (\Exception $e) {
+        log_message('error', 'Erreur transfert: ' . $e->getMessage());
+        return $this->response->setJSON([
+            'success' => false,
+            'message' => 'Erreur: ' . $e->getMessage()
+        ]);
     }
+}
 
     /**
      * Envoi multiple vers plusieurs numéros
@@ -457,42 +471,61 @@ class Operations extends Controller
     }
 
     public function history()
-    {
-        if (!$this->session->get('logged_in')) {
-            return redirect()->to('/login');
-        }
-
-        $phoneNumber = $this->session->get('phone_number');
-        $client = $this->compteModel->getClientByPhone($phoneNumber);
-        
-        if (!$client) {
-            $client = [
-                'client_id' => 'CLT' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT),
-                'nom' => $this->session->get('username') ?? 'Utilisateur',
-                'phone_number' => $phoneNumber,
-                'solde' => 100000
-            ];
-        }
-        
-        $type = $this->request->getGet('type');
-        $transactions = [];
-        
-        if ($type) {
-            $transactions = $this->transactionModel->getTransactionsByType($client['client_id'], $type);
-        } else {
-            $transactions = $this->transactionModel->getTransactionsClient($client['client_id']);
-        }
-
-        $data = [
-            'title' => 'Mobile Money — Historique',
-            'username' => $this->session->get('username'),
-            'phone_number' => $phoneNumber,
-            'client' => $client,
-            'transactions' => $transactions,
-            'current_type' => $type,
-            'total_transactions' => count($transactions)
-        ];
-
-        return view('client/history', $data);
+{
+    if (!$this->session->get('logged_in')) {
+        return redirect()->to('/login');
     }
+
+    $phoneNumber = $this->session->get('phone_number');
+    $client = $this->compteModel->getClientByPhone($phoneNumber);
+    
+    if (!$client) {
+        $client = [
+            'client_id' => 'CLT' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT),
+            'nom' => $this->session->get('username') ?? 'Utilisateur',
+            'phone_number' => $phoneNumber,
+            'solde' => 100000
+        ];
+    }
+    
+    // Récupérer TOUTES les transactions du client
+    $allTransactions = $this->transactionModel->getTransactionsClient($client['client_id']);
+    
+    // Filtrer par type si demandé
+    $type = $this->request->getGet('type');
+    $transactions = $allTransactions;
+    
+    if ($type && in_array($type, ['depot', 'retrait', 'transfert'])) {
+        $transactions = array_filter($allTransactions, function($t) use ($type) {
+            return $t['type_operation'] == $type;
+        });
+    }
+    
+    // Compter par type
+    $totalDepots = count(array_filter($allTransactions, function($t) {
+        return $t['type_operation'] == 'depot';
+    }));
+    $totalRetraits = count(array_filter($allTransactions, function($t) {
+        return $t['type_operation'] == 'retrait';
+    }));
+    $totalTransferts = count(array_filter($allTransactions, function($t) {
+        return $t['type_operation'] == 'transfert';
+    }));
+
+    $data = [
+        'title' => 'Mobile Money — Historique',
+        'username' => $this->session->get('username'),
+        'phone_number' => $phoneNumber,
+        'client' => $client,
+        'transactions' => $transactions,
+        'all_transactions' => $allTransactions,
+        'total_transactions' => count($allTransactions),
+        'total_depots' => $totalDepots,
+        'total_retraits' => $totalRetraits,
+        'total_transferts' => $totalTransferts,
+        'current_type' => $type ?? ''
+    ];
+
+    return view('client/history', $data);
+}
 }

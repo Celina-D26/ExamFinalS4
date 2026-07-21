@@ -48,3 +48,6 @@ $routes->post('frais/simuler', 'FraisController::simuler', ['filter' => 'auth'])
 
 // Routes opérateur - Comptes
 $routes->get('comptes', 'ComptesController::index', ['filter' => 'auth']);
+
+// Routes pour les opérations
+$routes->post('client/transfer', 'Client\Operations::transferSimple');
