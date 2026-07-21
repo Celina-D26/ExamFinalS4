@@ -50,4 +50,15 @@ $routes->post('frais/simuler', 'FraisController::simuler', ['filter' => 'auth'])
 $routes->get('comptes', 'ComptesController::index', ['filter' => 'auth']);
 
 // Routes pour les opérations
+<<<<<<< HEAD
 $routes->post('client/transfer', 'Client\Operations::transferSimple');
+=======
+$routes->post('client/transfer', 'Client\Operations::transferSimple');
+// Routes Épargne
+$routes->get('epargne', 'EpargneController::index');
+$routes->post('epargne/ajouter', 'EpargneController::ajouter');
+$routes->post('epargne/retirer', 'EpargneController::retirer');
+$routes->post('epargne/configurer', 'EpargneController::configurer');
+$routes->get('epargne/toggle', 'EpargneController::toggle');
+$routes->get('epargne/admin', 'EpargneController::adminListe');
+>>>>>>> 208046f (dernier modif)

@@ -52,6 +52,7 @@ class Operations extends Controller
 
         return view('client/operations', $data);
     }
+    
 
     public function deposit()
     {
@@ -528,4 +529,8 @@ class Operations extends Controller
 
     return view('client/history', $data);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 208046f (dernier modif)
 }

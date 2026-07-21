@@ -102,6 +102,15 @@ CREATE TABLE IF NOT EXISTS transactions (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+<<<<<<< HEAD
+=======
+
+
+CREATE TABLE IF NOT EXISTS promotion
+    id id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pourcentage 
+
+>>>>>>> 208046f (dernier modif)
 -- ============================================
 -- 3. AJOUT DES COLONNES SI ELLES N'EXISTENT PAS
 -- ============================================
@@ -176,6 +185,16 @@ INSERT OR IGNORE INTO comptes_clients (client_id, nom, prenom, phone_number, ema
 ('CLT009', 'Rasoa', 'Mamy', '340000005', 'mamy.rasoa@email.com', 50000, 0, 0, 0, 0, 'actif'),
 ('CLT010', 'Randria', 'Tovo', '340000006', 'tovo.randria@email.com', 60000, 0, 0, 0, 0, 'actif');
 
+<<<<<<< HEAD
+=======
+
+INSERT OR IGNORE INTO epargne (client_id,solde_epargne, total_epargne, total_retraits_epargne, pourcentage_defaut,epargne_active) VALUES
+('CLT001', 5000, 5000, 0, 5, 1 );
+
+INSERT OR IGNORE INTO epargne (client_id,solde_epargne, total_epargne, total_retraits_epargne, pourcentage_defaut,epargne_active) VALUES
+('CLT001', 'Rakoto', 'Jean', 0, 0, 0, 3, 1 );
+
+>>>>>>> 208046f (dernier modif)
 -- 4.5 Transactions (5 enregistrements)
 INSERT OR IGNORE INTO transactions (client_id, type_operation, montant, frais_appliques, commission_inter_operateur, montant_net, solde_apres, status, created_at, description) VALUES
 ('CLT006', 'depot', 50000, 0, 0, 50000, 216000, 'complete', datetime('now', '-2 hours'), 'Dépôt automatique'),

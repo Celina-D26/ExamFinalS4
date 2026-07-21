@@ -82,6 +82,16 @@
             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
         </svg>
         <span>Montants par Opérateur</span>
+<<<<<<< HEAD
+=======
+    </a>
+     <a href="<?= site_url('epargne') ?>" class="nav-item <?= (current_url() == site_url('epargne')) ? 'active' : '' ?>">
+        <svg viewBox="0 0 24 24">
+            <line x1="12" y1="1" x2="12" y2="23" />
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        </svg>
+        <span>Epargne </span>
+>>>>>>> 208046f (dernier modif)
     </a>
 
     <div class="sidebar-bottom">
